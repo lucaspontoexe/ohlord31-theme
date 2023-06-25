@@ -21,7 +21,7 @@
 
 	main {
         /* cor pro debug, apagar depois */
-		background-color: black;
+		// background-color: black;
 		width: 100vw;
         height: 100vh;
         display: flex;
@@ -31,9 +31,10 @@
 
 	.lowerthird {
         /* a gente usa a linha dos 90% como margem */
-		margin-left: 5vw;
-		margin-right: 5vw;
-		margin-bottom: 5vh;
+		padding-left: 5vw;
+		padding-right: 5vw;
+		padding-bottom: 5vh;
+		padding-top: 5em;
 
 		position: relative;
 		display: flex;
@@ -43,8 +44,7 @@
 
 		text-align: center;
 
-        /* pra fins de debugging - apagar depois */
-        background-color: rgba(0, 188, 255, 0.3);
+        background: linear-gradient(to bottom, rgba(49, 47, 89, 0) 0%,rgba(49, 47, 89, 1) 100%);
 	}
 
 	.title-top {
@@ -69,5 +69,6 @@
 		line-height: 1.2;
 		color: $main-title-color;
 		filter: $font-shadow-filter;
+		// letter-spacing: 0px; //pra animação etc.
 	}
 </style>
