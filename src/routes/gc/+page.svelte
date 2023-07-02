@@ -1,11 +1,17 @@
 <script lang="ts">
+	import { fade } from "svelte/transition";
+
 	// import type { PageData } from './$types';
 
 	// export let data: PageData;
+	let toggle = false;
+
 </script>
 
 <main>
-	<div class="lowerthird">
+	<div class="debug"><input type="checkbox" name="alo" id="alo" bind:checked={toggle}></div>
+	{#if toggle}
+	<div class="lowerthird" transition:fade={{duration: 1000}}>
 		<div class="title-top">topo do rolê</div>
 		<div class="line" />
 		<div class="title-bottom">
@@ -13,11 +19,24 @@
 			com linha dupla
 		</div>
 	</div>
+	{/if}
+
 </main>
 
 <style lang="scss">
     /* body já tá sem margin/padding */
 	$font-shadow-filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
+
+	@keyframes ala {
+		from {
+			letter-spacing: 10px;
+			filter: $font-shadow-filter blur(5px);
+		}
+		to {
+			letter-spacing: 0px;
+			filter: $font-shadow-filter blur(0px);
+		}
+	}
 
 	main {
         /* cor pro debug, apagar depois */
@@ -68,7 +87,13 @@
 		white-space: pre-line;
 		line-height: 1.2;
 		color: $main-title-color;
-		filter: $font-shadow-filter;
-		// letter-spacing: 0px; //pra animação etc.
+		filter: $font-shadow-filter blur(0px);
+		// letter-spacing: 10px; //pra animação etc.
+		animation: ala 2s;
+	}
+
+	.debug {
+		position: fixed;
+		top: 0px;
 	}
 </style>
