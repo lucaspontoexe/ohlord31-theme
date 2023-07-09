@@ -143,6 +143,10 @@ export function websocketStore<InitialType>(scope: string, initialValue: Initial
 			const send = () => socket?.send(JSON.stringify({ type: 'set-state', scope, payload: value }));
 			open().then(send);
 		},
+        update(callback: (arg0: {} | InitialType) => any) {
+            const newValue = callback(localAppState.get(scope) ?? initialValue);
+            this.set(newValue);
+        },
 		subscribe(subscription: (value: typeof initialValue) => void) {
 			open();
 			subscription(localAppState.has(scope) ? (localAppState.get(scope) as InitialType) : initialValue);
