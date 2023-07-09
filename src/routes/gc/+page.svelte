@@ -1,9 +1,6 @@
 <script lang="ts">
 	import { fade } from "svelte/transition";
 
-	// import type { PageData } from './$types';
-
-	// export let data: PageData;
 	let toggle = false;
 
 </script>
@@ -11,12 +8,11 @@
 <main>
 	<div class="debug"><input type="checkbox" name="alo" id="alo" bind:checked={toggle}></div>
 	{#if toggle}
-	<div class="lowerthird" transition:fade={{duration: 1000}}>
+	<div class="lowerthird" transition:fade={{duration: 1000, delay: 200}}>
 		<div class="title-top">topo do rolê</div>
 		<div class="line" />
 		<div class="title-bottom">
-			parte de baixo
-			com linha dupla
+			é isso aí mesmo
 		</div>
 	</div>
 	{/if}
@@ -29,20 +25,18 @@
 
 	@keyframes ala {
 		from {
-			// letter-spacing: 5px;
-			transform: translateY(0.1em) scale(0.95);
+			transform: translateY(10px) scale(0.96);
 			filter: $font-shadow-filter blur(5px);
 		}
 		to {
-			letter-spacing: 0px;
 			transform: translateY(0px) scale(1);
 			filter: $font-shadow-filter blur(0px);
 		}
 	}
 
 	@keyframes line {
-		from {width: 0%;}
-		to {width: 60%;}
+		from {clip-path: inset(0 50% 0 50%);}
+		to {clip-path: inset(0);}
 	}
 
 	main {
@@ -70,7 +64,7 @@
 
 		text-align: center;
 
-        background: linear-gradient(to bottom, rgba(49, 47, 89, 0) 0%,rgba(49, 47, 89, 1) 100%);
+        background: linear-gradient(to bottom, rgba(47, 68, 0, 0) 0%,rgba(47, 68, 0, 100%))
 	}
 
 	.title-top {
@@ -96,7 +90,6 @@
 		line-height: 1.2;
 		color: $main-title-color;
 		filter: $font-shadow-filter blur(0px);
-		// letter-spacing: 10px; //pra animação etc.
 		animation: ala 2s;
 
 		will-change: contents;
