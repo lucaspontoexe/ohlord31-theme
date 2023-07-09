@@ -1,3 +1,6 @@
+// vale o lembrete: isso aqui é um port bem gambiarra da versão anterior do projeto
+
+
 // import type {RequestNames, SocketEvents} from '$types/Events';
 
 import { browser } from "$app/environment";
