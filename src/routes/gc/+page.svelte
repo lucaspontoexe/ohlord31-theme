@@ -1,19 +1,22 @@
 <script lang="ts">
 	import { fade } from "svelte/transition";
+	import websocketStore from "$lib/websocketStore";
 
 	let toggle = false;
 
+	let fallback = {"id":"Rjo1970Iz","layout":"_none","props":{"top":"1ª Leitura","bottom":"Zc 9,9-10","duration":0}};
+
+	const store = websocketStore('lower-third-display', fallback);
+	$: toggle = $store.layout === "default";
 </script>
 
 <main>
 	<div class="debug"><input type="checkbox" name="alo" id="alo" bind:checked={toggle}></div>
 	{#if toggle}
 	<div class="lowerthird" transition:fade={{duration: 1000, delay: 200}}>
-		<div class="title-top">topo do rolê</div>
+		<div class="title-top">{$store.props.top}</div>
 		<div class="line" />
-		<div class="title-bottom">
-			é isso aí mesmo
-		</div>
+		<div class="title-bottom">{$store.props.bottom}</div>
 	</div>
 	{/if}
 
