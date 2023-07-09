@@ -29,13 +29,20 @@
 
 	@keyframes ala {
 		from {
-			letter-spacing: 10px;
+			// letter-spacing: 5px;
+			transform: translateY(0.1em) scale(0.95);
 			filter: $font-shadow-filter blur(5px);
 		}
 		to {
 			letter-spacing: 0px;
+			transform: translateY(0px) scale(1);
 			filter: $font-shadow-filter blur(0px);
 		}
+	}
+
+	@keyframes line {
+		from {width: 0%;}
+		to {width: 60%;}
 	}
 
 	main {
@@ -79,6 +86,7 @@
         width: 60%; 
 
         background-color: white;
+		animation: line 2s;
     }
 
 	.title-bottom {
@@ -90,6 +98,8 @@
 		filter: $font-shadow-filter blur(0px);
 		// letter-spacing: 10px; //pra animação etc.
 		animation: ala 2s;
+
+		will-change: contents;
 	}
 
 	.debug {
