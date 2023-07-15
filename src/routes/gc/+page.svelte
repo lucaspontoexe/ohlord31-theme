@@ -15,7 +15,7 @@
 	{#if toggle}
 	<div class="lowerthird" transition:fade={{duration: 1000, delay: 200}}>
 		<div class="title-top">{$store.props.top}</div>
-		<div class="line" />
+		<div class="line" />   <!-- ---------------- -->
 		<div class="title-bottom">{$store.props.bottom}</div>
 	</div>
 	{/if}
