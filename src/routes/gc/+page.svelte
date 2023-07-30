@@ -56,7 +56,7 @@
         /* a gente usa a linha dos 90% como margem */
 		padding-left: 5vw;
 		padding-right: 5vw;
-		padding-bottom: 5vh;
+		padding-bottom: 7vh;
 		padding-top: 5em;
 
 		position: relative;
@@ -64,6 +64,7 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: end;
+		gap: 10px;
 
 		text-align: center;
 
