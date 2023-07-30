@@ -7,13 +7,14 @@
 	let fallback = {"id":"Rjo1970Iz","layout":"_none","props":{"top":"1ª Leitura","bottom":"Zc 9,9-10","duration":0}};
 
 	const store = websocketStore('lower-third-display', fallback);
+	const liturgia = websocketStore('liturgia', {cor: "Vermelho"});
 	$: toggle = $store.layout === "default";
 </script>
 
 <main>
 	<div class="debug"><input type="checkbox" name="alo" id="alo" bind:checked={toggle}></div>
 	{#if toggle}
-	<div class="lowerthird" transition:fade={{duration: 1000, delay: 200}}>
+	<div class="lowerthird cl-{$liturgia.cor?.toLowerCase()}" transition:fade={{duration: 1000, delay: 200}}>
 		<div class="title-top">{$store.props.top}</div>
 		<div class="line" />   <!-- ---------------- -->
 		<div class="title-bottom">{$store.props.bottom}</div>
@@ -68,7 +69,7 @@
 
 		text-align: center;
 
-        background: linear-gradient(to bottom, rgba(47, 68, 0, 0) 0%,rgba(47, 68, 0, 100%))
+        // background: linear-gradient(to bottom, rgba(47, 68, 0, 0) 0%,rgba(47, 68, 0, 100%))
 	}
 
 	.title-top {
