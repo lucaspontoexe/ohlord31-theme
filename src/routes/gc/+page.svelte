@@ -2,16 +2,13 @@
 	import { fade } from "svelte/transition";
 	import {websocketStore, fallback} from "$lib/websocketStore";
 
-	let toggle = false;
-
 	const lt_display = websocketStore('lower-third-display', fallback["lower-third-display"]);
 	const liturgia = websocketStore('liturgia', fallback.liturgia);
-	$: toggle = $lt_display.layout === "default";
 </script>
 
 <main>
-	<div class="debug"><input type="checkbox" name="alo" id="alo" bind:checked={toggle}></div>
-	{#if toggle}
+	<div class="debug">{JSON.stringify($lt_display, null, 4)}</div>
+	{#if $lt_display.layout === "default"}
 	<div class="lowerthird cl-{$liturgia.cor?.toLowerCase()}" transition:fade={{duration: 1000, delay: 200}}>
 		<div class="title-top">{$lt_display.props.top}</div>
 		<div class="line" />   <!-- ---------------- -->
