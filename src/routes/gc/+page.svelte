@@ -1,23 +1,21 @@
 <script lang="ts">
 	import { fade } from "svelte/transition";
-	import websocketStore from "$lib/websocketStore";
+	import {websocketStore, fallback} from "$lib/websocketStore";
 
 	let toggle = false;
 
-	let fallback = {"id":"Rjo1970Iz","layout":"_none","props":{"top":"1ª Leitura","bottom":"Zc 9,9-10","duration":0}};
-
-	const store = websocketStore('lower-third-display', fallback);
-	const liturgia = websocketStore('liturgia', {cor: "Vermelho"});
-	$: toggle = $store.layout === "default";
+	const lt_display = websocketStore('lower-third-display', fallback["lower-third-display"]);
+	const liturgia = websocketStore('liturgia', fallback.liturgia);
+	$: toggle = $lt_display.layout === "default";
 </script>
 
 <main>
 	<div class="debug"><input type="checkbox" name="alo" id="alo" bind:checked={toggle}></div>
 	{#if toggle}
 	<div class="lowerthird cl-{$liturgia.cor?.toLowerCase()}" transition:fade={{duration: 1000, delay: 200}}>
-		<div class="title-top">{$store.props.top}</div>
+		<div class="title-top">{$lt_display.props.top}</div>
 		<div class="line" />   <!-- ---------------- -->
-		<div class="title-bottom">{$store.props.bottom}</div>
+		<div class="title-bottom">{$lt_display.props.bottom}</div>
 	</div>
 	{/if}
 

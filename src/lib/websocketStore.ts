@@ -31,7 +31,7 @@ const socketAddress = "ws://localhost:3000/";
 let socket: WebSocket | undefined;
 
 try {
-	socket = new WebSocket(socketAddress);	
+	socket = new WebSocket(socketAddress);
 } catch (error) {
 	console.warn('tem que iniciar o servidor, né?')
 }
@@ -40,13 +40,13 @@ try {
 // agora a lib funciona do jeito que tem que ser.
 const subscriptions = new Set<Subscription>();
 
-let localAppState = new Map<string,unknown>();
+let localAppState = new Map<string, unknown>();
 
 export function websocketStore<InitialType>(scope: string, initialValue: InitialType) {
 	let openPromise: Promise<void> | undefined, reopenTimeoutHandler: ReturnType<typeof setTimeout> | undefined;
 	let reopenCount = 0;
 
-    if (!browser) return readable(initialValue);
+	if (!browser) return readable(initialValue);
 
 	function reopenTimeout() {
 		const n = reopenCount;
@@ -110,13 +110,13 @@ export function websocketStore<InitialType>(scope: string, initialValue: Initial
 					});
 
 					// save app state locally
-                    
+
 					incomingData.payload;
 					break;
 
-				case 'response': 
-				// faz nada, deixa acontecer
-				break;
+				case 'response':
+					// faz nada, deixa acontecer
+					break;
 
 				default:
 					console.warn('got unexpected type. data is:', incomingData);
@@ -146,10 +146,10 @@ export function websocketStore<InitialType>(scope: string, initialValue: Initial
 			const send = () => socket?.send(JSON.stringify({ type: 'set-state', scope, payload: value }));
 			open().then(send);
 		},
-        update(callback: (arg0: {} | InitialType) => any) {
-            const newValue = callback(localAppState.get(scope) ?? initialValue);
-            this.set(newValue);
-        },
+		update(callback: (arg0: {} | InitialType) => any) {
+			const newValue = callback(localAppState.get(scope) ?? initialValue);
+			this.set(newValue);
+		},
 		subscribe(subscription: (value: typeof initialValue) => void) {
 			open();
 			subscription(localAppState.has(scope) ? (localAppState.get(scope) as InitialType) : initialValue);
@@ -167,3 +167,6 @@ export function websocketStore<InitialType>(scope: string, initialValue: Initial
 }
 
 export default websocketStore;
+
+
+export const fallback = {"liturgia":{"nome":"São João Maria Vianney - Memória","cor":"Branco","leituras":[{"nome":"1ª Leitura","referencia":"Lv 23,1.4-11.15-16.27.34b-37"},{"nome":"Salmo Responsorial","referencia":"Sl 80","descricao":"Exultai no Senhor, nossa força."},{"nome":"Evangelho","referencia":"Mt 13,54-58"}],"savedAt":1691204445991},"lower-third-items":[{"id":"7_o3qPjcN","layout":"default","props":{"top":"1ª Leitura","bottom":"Lv 23,1.4-11.15-16.27.34b-37","duration":0}},{"id":"CKSXzlF5u5","layout":"default","props":{"top":"Salmo Responsorial: Sl 80","bottom":"Exultai no Senhor, nossa força.","duration":0}},{"id":"7IvnO9A5JO","layout":"default","props":{"top":"Evangelho","bottom":"Mt 13,54-58","duration":0}},{"id":"H3sR4DXiDA","layout":"default","props":{"top":"Oração da Assembleia","bottom":"funciona","duration":0}},{"id":"ooXyGOADzw","layout":"ofertório","props":{"duration":0}},{"id":"W56IHNTYGg","layout":"comunhão","props":{}}],"idle-screen-slides":[{"id":"default_0","layout":"title","props":{"main":"Já vamos começar!","bottom":"A celebração terá início\nem instantes.","duration":5000,"background_url":"/background/panorama-altar.webp"}},{"id":"default_1","layout":"liturgia","props":{"duration":10000,"background_url":"/background/flor-do-lado.jpg"}}],"lower-third-display":{"id":"H3sR4DXiDA","layout":"default","props":{"top":"Oração da Assembleia","bottom":"funciona","duration":0}}}
