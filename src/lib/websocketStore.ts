@@ -23,7 +23,7 @@ interface AppStateResponse extends ServerResponse {
 	payload: Record<string, unknown>;
 }
 
-const socketAddress = `ws://${location.hostname}:3000/`;
+const socketAddress = `ws://${browser ? location.hostname : "localhost"}:3000/`;
 
 // dexar o socket aqui por fora garante um instância por janela,
 // não importa quantos objetos estejam usando
