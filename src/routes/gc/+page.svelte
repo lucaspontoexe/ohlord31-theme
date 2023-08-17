@@ -14,7 +14,11 @@
 	{/if}
 
 	{#if $lt_display.layout === 'ofertório'}
-		<div class="pix">mim dê papai</div>
+		<div class="pix">
+			<div class="headline">Faça sua oferta!</div>
+			<div class="line">linha 2</div>
+			<div class="line">linha 3</div>
+		</div>
 	{/if}
 
 	{#if $lt_display.layout === "comunhão"}
