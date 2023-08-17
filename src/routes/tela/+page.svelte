@@ -3,15 +3,10 @@
 	import { websocketStore, fallback } from '$lib/websocketStore';
 
 	export let data: PageData;
-    const items = websocketStore('idle-screen-slides', fallback['idle-screen-slides']);
-	
+	const items = websocketStore('idle-screen-slides', fallback['idle-screen-slides']);
 </script>
 
 <main />
 
 <pre class="debug">{JSON.stringify(data)}</pre>
-
-<br />
-
 <pre class="debug">{JSON.stringify($items, null, 4)}</pre>
-
