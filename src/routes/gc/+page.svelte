@@ -8,12 +8,17 @@
 
 <main>
 	<div class="debug">{JSON.stringify($lt_display, null, 4)}</div>
+
 	{#if $lt_display.layout === "default"}
 	<div class="lowerthird cl-{$liturgia.cor?.toLowerCase()}" transition:fade={{duration: 1000, delay: 200}}>
 		<div class="title-top">{$lt_display.props.top}</div>
 		<div class="line" />   <!-- ---------------- -->
 		<div class="title-bottom">{$lt_display.props.bottom}</div>
 	</div>
+	{/if}
+
+	{#if $lt_display.layout === "ofertório"}
+		<div class="pix">mim dê papai</div>
 	{/if}
 
 </main>
