@@ -17,6 +17,9 @@
 		<div class="pix">mim dê papai</div>
 	{/if}
 
+	{#if $lt_display.layout === "comunhão"}
+		<div class="comunhão">(comunhão espiritual placeholder)</div>
+	{/if}
 </main>
 
 <style lang="scss">
