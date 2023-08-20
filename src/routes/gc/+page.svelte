@@ -15,9 +15,14 @@
 
 	{#if $lt_display.layout === 'ofertório'}
 		<div class="pix">
-			<div class="headline">Faça sua oferta!</div>
-			<div class="line">linha 2</div>
-			<div class="line">linha 3</div>
+			<div class="qrcode-container">
+				<img src="#" alt="código qr">
+			</div>
+			<div class="text">
+				<div class="headline">Faça sua oferta!</div>
+				<div class="line">linha 2</div>
+				<div class="line">linha 3</div>
+			</div>
 		</div>
 	{/if}
 
