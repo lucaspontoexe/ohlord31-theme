@@ -232,8 +232,8 @@ export const fallback = {
 		}
 	],
 	'lower-third-display': {
-		id: 'H3sR4DXiDA',
-		layout: 'default',
+		id: '_none',
+		layout: 'none',
 		props: { top: 'Oração da Assembleia', bottom: 'funciona', duration: 0 }
 	}
 };
