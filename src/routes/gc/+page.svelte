@@ -15,6 +15,7 @@
 
 	{#if $lt_display.layout === 'ofertório'}
 		<div class="pix">
+			<!-- por que não só colocar a imagem png aqui? -->
 			<div class="qrcode-container">
 				<img src="#" alt="código qr">
 			</div>
