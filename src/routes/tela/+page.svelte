@@ -4,19 +4,26 @@
 
 	export let data: PageData;
 	const items = websocketStore('idle-screen-slides', fallback['idle-screen-slides']);
+	// cortar pra quando a gente componentizar esse
+	const liturgia = websocketStore('liturgia', fallback['liturgia']);
 </script>
 
 <main>
 
 	<section class="tela-liturgia">
 		<div class="title">
-			1º Domingo do Tempo Legal
+			{$liturgia.nome}
 		</div>
 
 		<div class="liturgia">
-			<div class="nome">1ª Leitura</div>
-			<div class="referencia">Lc 12,3-4</div>
-			<div class="descricao">é salmo agora</div>
+			{#each $liturgia.leituras as leitura}	
+				<div class="leitura">
+					<div class="nome">{leitura.nome}</div>
+					<div class="referencia">{leitura.referencia}</div>
+					{#if leitura.descricao} <div class="descricao">{leitura.descricao}</div> {/if}
+				</div>
+			{/each}
+
 		</div>
 	</section>
 
@@ -24,3 +31,11 @@
 
 <pre class="debug">{JSON.stringify(data)}</pre>
 <pre class="debug">{JSON.stringify($items, null, 4)}</pre>
+
+
+<style lang="scss">
+	.tela-liturgia {
+		font-family: "Poppins Bold";
+		display: flex;
+	}
+</style>
