@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import { websocketStore, fallback } from '$lib/websocketStore';
+	import Debug from '$lib/Debug.svelte';
 
 	export let data: PageData;
 	const items = websocketStore('idle-screen-slides', fallback['idle-screen-slides']);
@@ -26,7 +27,7 @@
 	</section>
 </main>
 
-<pre class="debug">{JSON.stringify(data)} {'\n\n'} {JSON.stringify($items, null, 4)}</pre>
+<Debug data={$items}/>
 
 <style lang="scss">
 	.tela-liturgia {
@@ -74,13 +75,5 @@
 				font-size: 3em;
 			}
 		}
-	}
-
-	.debug {
-		position: fixed;
-		background-color: rgba(black, 0.25);
-		color: white;
-		top: 20px;
-		left: 20px;
 	}
 </style>
