@@ -1,9 +1,7 @@
 <script lang="ts">
-	import type { PageData } from './$types';
 	import { websocketStore, fallback } from '$lib/websocketStore';
 	import Debug from '$lib/Debug.svelte';
 
-	export let data: PageData;
 	const items = websocketStore('idle-screen-slides', fallback['idle-screen-slides']);
 	// cortar pra quando a gente componentizar esse
 	const liturgia = websocketStore('liturgia', fallback['liturgia']);
