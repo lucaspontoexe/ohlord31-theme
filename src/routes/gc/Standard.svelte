@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { fade } from "svelte/transition";
-	import {websocketStore, fallback} from "$lib/websocketStore";
+	import { websocketStore, fallback } from "$lib/websocketStore";
 
 	export let top = "";
     export let bottom = "";
@@ -19,7 +19,7 @@
     /* body já tá sem margin/padding */
 	$font-shadow-filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
 
-	@keyframes ala {
+	@keyframes fly-in {
 		from {
 			transform: translateY(10px) scale(0.96);
 			filter: $font-shadow-filter blur(5px);
@@ -77,7 +77,7 @@
 		line-height: 1.2;
 		color: $main-title-color;
 		filter: $font-shadow-filter blur(0px);
-		animation: ala 2s;
+		animation: fly-in 2s;
 
 		will-change: contents;
 	}
