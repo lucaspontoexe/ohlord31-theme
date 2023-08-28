@@ -36,10 +36,14 @@
 		gap: 20px;
 		height: 100vh;
 
+		background-color: black; // mudar pra imagem aleatória 1920x1080;
+
 		.title {
-			max-width: 50%;
 			font-family: 'Poppins Bold';
+			color: $main-title-color;
+
 			font-size: 8em;
+			max-width: 50%;
 		}
 
 		.liturgia {
@@ -58,18 +62,22 @@
 
 			.nome {
 				font-family: 'Lora';
+				color: white;
 				font-size: 3em;
 			}
 
 			.referencia {
 				// apply poppins
 				font-family: 'Poppins Bold';
+				color: $main-title-color;
+
 				font-size: 5em;
 				margin: 0px;
 			}
 
 			.descricao {
 				font-family: 'Lora Italic';
+				color: white;				
 				font-size: 3em;
 			}
 		}
