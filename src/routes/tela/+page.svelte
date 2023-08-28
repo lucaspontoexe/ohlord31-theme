@@ -29,13 +29,54 @@
 
 </main>
 
-<pre class="debug">{JSON.stringify(data)}</pre>
-<pre class="debug">{JSON.stringify($items, null, 4)}</pre>
-
+<pre class="debug">{JSON.stringify(data)} {'\n\n'} {JSON.stringify($items, null, 4)}</pre>
 
 <style lang="scss">
 	.tela-liturgia {
-		font-family: "Poppins Bold";
 		display: flex;
+		align-items: center;		
+		justify-content: space-between;
+		padding: 0px 4vw;
+		gap: 20px;
+		height: 100vh;
+		
+		.title {
+			max-width: 50%;
+			font-family: "Poppins Bold";
+			font-size: 8em;
+		}
+
+		.liturgia {
+			text-align: center;
+			max-width: 50%;
+
+			.leitura {
+				margin: 2em 0px;
+			}
+
+			.nome {
+				font-family: "Lora";
+				font-size: 3em;
+			}
+
+			.referencia {
+				// apply poppins
+				font-family: "Poppins Bold";
+				font-size: 5em;
+			}
+
+			.descricao {
+				font-family: "Lora Italic";
+				font-size: 3em;
+			}
+		}
+	}
+
+	.debug {
+		position: fixed;
+		background-color: rgba(black, 0.25);
+		color: white;
+		top: 20px;
+		left: 20px;
 	}
 </style>
