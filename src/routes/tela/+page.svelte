@@ -18,14 +18,14 @@
 				<div class="leitura">
 					<div class="nome">{leitura.nome}</div>
 					<div class="referencia">{leitura.referencia}</div>
-					{#if leitura.descricao} <div class="descricao">{leitura.descricao} </div> {/if}
+					{#if leitura.descricao} <div class="descricao">{leitura.descricao}</div> {/if}
 				</div>
 			{/each}
 		</div>
 	</section>
 </main>
 
-<Debug data={$items}/>
+<Debug data={$items} />
 
 <style lang="scss">
 	.tela-liturgia {
@@ -77,7 +77,7 @@
 
 			.descricao {
 				font-family: 'Lora Italic';
-				color: white;				
+				color: white;
 				font-size: 3em;
 			}
 		}
