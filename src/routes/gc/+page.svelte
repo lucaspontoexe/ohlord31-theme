@@ -17,7 +17,7 @@
 		<div class="pix">
 			<!-- por que não só colocar a imagem png aqui? -->
 			<div class="qrcode-container">
-				<img src="#" alt="código qr">
+				<img src="#" alt="código qr" />
 			</div>
 			<div class="text">
 				<div class="headline">Faça sua oferta!</div>
@@ -27,7 +27,7 @@
 		</div>
 	{/if}
 
-	{#if $lt_display.layout === "comunhão"}
+	{#if $lt_display.layout === 'comunhão'}
 		<div class="comunhão">(comunhão espiritual placeholder)</div>
 	{/if}
 </main>
@@ -44,6 +44,29 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-end;
+	}
+
+	.pix {
+		display: flex;
+		flex-direction: row;
+		
+		padding-left: 5vw;
+		padding-bottom: 7vh;
+		padding-top: 7em;
+		
+		background: linear-gradient(4deg, #000000 -5%, rgba(0, 0, 0, 0) 60%);
+		filter: $font-shadow-filter;
+
+		.headline {
+			@include headline;
+			font-size: 3em;
+		}
+
+		.line {
+			color: white;
+			font-family: 'Lora';
+			font-size: 2em;
+		}
 	}
 
 	.debug {
