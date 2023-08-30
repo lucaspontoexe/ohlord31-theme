@@ -71,11 +71,10 @@
     }
 
 	.title-bottom {
-		font-family: "Poppins Bold";
+		@include headline;
 		font-size: 72px; // em, etc.
 		white-space: pre-line;
 		line-height: 1.2;
-		color: $main-title-color;
 		filter: $font-shadow-filter blur(0px);
 		animation: fly-in 2s;
 

@@ -1,2 +1,7 @@
 /* Variables and mixins declared here will be available in all other SCSS files */
 $main-title-color: #FFBD69;
+
+@mixin headline {
+    font-family: "Poppins Bold";
+    color: $main-title-color;
+}
