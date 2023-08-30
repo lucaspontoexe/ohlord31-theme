@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { fade } from "svelte/transition";
 	import { websocketStore, fallback } from "$lib/websocketStore";
+	import { cssBackground } from "$lib/GCBackgroundColor";
 
 	export let top = "";
     export let bottom = "";
@@ -9,7 +10,7 @@
 	const liturgia = websocketStore('liturgia', fallback.liturgia);
 </script>
 
-	<div class="lowerthird cl-{$liturgia.cor?.toLowerCase()}" transition:fade={{duration: 1000, delay: 200}}>
+	<div class="lowerthird" style={$cssBackground} transition:fade={{duration: 1000, delay: 200}}>
 		<div class="title-top">{top}</div>
 		<div class="line" />   <!-- ---------------- -->
 		<div class="title-bottom">{bottom}</div>
