@@ -23,7 +23,7 @@ interface AppStateResponse extends ServerResponse {
 	payload: Record<string, unknown>;
 }
 
-const socketAddress = `ws://${browser ? location.hostname : "localhost"}:3000/`;
+const socketAddress = `ws://${browser ? location.hostname : 'localhost'}:3000/`;
 
 // dexar o socket aqui por fora garante um instância por janela,
 // não importa quantos objetos estejam usando
@@ -110,8 +110,9 @@ export function websocketStore<InitialType>(scope: string, initialValue: Initial
 					});
 
 					// save app state locally
-
-					incomingData.payload;
+					Object.entries(incomingData.payload).forEach(([key, value]) =>
+						localAppState.set(key, value)
+					);
 					break;
 
 				case 'response':
