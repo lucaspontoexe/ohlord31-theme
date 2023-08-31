@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Standard from './Standard.svelte';
+	import qr_pix from '$lib/qr_pix.png';
 
 	import { websocketStore, fallback } from '$lib/websocketStore';
 
@@ -17,7 +18,7 @@
 		<div class="pix">
 			<!-- por que não só colocar a imagem png aqui? -->
 			<div class="qrcode-container">
-				<img src="#" alt="código qr" />
+				<img src="{qr_pix}" alt="código qr" />
 			</div>
 			<div class="text">
 				<div class="headline">Faça sua oferta!</div>
@@ -51,8 +52,9 @@
 		flex-direction: row;
 		
 		padding-left: 5vw;
-		padding-bottom: 7vh;
+		padding-bottom: 5vh;
 		padding-top: 7em;
+		gap: 2em;
 		
 		background: linear-gradient(4deg, #000000 -5%, rgba(0, 0, 0, 0) 60%);
 		filter: $font-shadow-filter;
@@ -60,6 +62,10 @@
 		.headline {
 			@include headline;
 			font-size: 3em;
+		}
+
+		img {
+			border-radius: 5px;
 		}
 
 		.line {
