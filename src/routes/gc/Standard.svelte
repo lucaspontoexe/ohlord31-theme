@@ -1,13 +1,11 @@
 <script lang="ts">
 	import { fade } from "svelte/transition";
-	import { websocketStore, fallback } from "$lib/websocketStore";
 	import { cssBackground } from "$lib/GCBackgroundColor";
 
 	export let top = "";
     export let bottom = "";
     // tem que ver como a gente vai como a gente vai controlar esse timing.
     // export let duration = 0; 
-	const liturgia = websocketStore('liturgia', fallback.liturgia);
 </script>
 
 	<div class="lowerthird" style={$cssBackground} transition:fade={{duration: 1000, delay: 200}}>
