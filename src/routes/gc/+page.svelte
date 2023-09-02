@@ -5,6 +5,10 @@
 
 	import { websocketStore, fallback } from '$lib/websocketStore';
 	const lt_display = websocketStore('lower-third-display', fallback['lower-third-display']);
+	
+	function clearLowerThird() {
+		$lt_display = { id: '_none', layout: 'none', props: {top: '', bottom: '', duration: 0} };
+	}
 </script>
 
 <main>
@@ -19,7 +23,7 @@
 	{/if}
 
 	{#if $lt_display.layout === 'comunhão'}
-		<Comunhão />
+		<Comunhão on:end={clearLowerThird} />
 	{/if}
 </main>
 

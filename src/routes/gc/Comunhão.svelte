@@ -1,5 +1,12 @@
 <script lang="ts">
+	import { createEventDispatcher, onMount } from 'svelte';
 	import { fade, fly } from 'svelte/transition';
+	const dispatch = createEventDispatcher();
+	
+	onMount(() => {
+		const handle = setTimeout(() => dispatch('end'), 36_000);
+		return () => clearTimeout(handle);
+	});
 </script>
 
 <div class="comunhão" in:fly={{ x: -20, duration: 2000 }} out:fade={{ duration: 1000 }}>
