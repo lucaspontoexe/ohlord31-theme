@@ -56,7 +56,7 @@
 		padding-top: 7em;
 		gap: 2em;
 		
-		background: linear-gradient(4deg, #000000 -5%, rgba(0, 0, 0, 0) 60%);
+		background: linear-gradient(4deg, var(--bg-color) -5%, rgba(0, 0, 0, 0) 60%);
 		filter: $font-shadow-filter;
 
 		.headline {
