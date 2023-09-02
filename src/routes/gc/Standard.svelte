@@ -55,8 +55,8 @@
 	.title-top {
 		font-family: "Lora Italic";
 		font-size: 48px;
-		filter: $font-shadow-filter;
 		color: white;
+		filter: $font-shadow-filter;
 	}
 
     .line {
