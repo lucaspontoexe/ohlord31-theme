@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { fade } from "svelte/transition";
-	import { cssBackground } from "$lib/GCBackgroundColor";
 
 	export let top = "";
     export let bottom = "";
@@ -8,7 +7,7 @@
     // export let duration = 0; 
 </script>
 
-	<div class="lowerthird" style={$cssBackground} transition:fade={{duration: 1000, delay: 200}}>
+	<div class="lowerthird" transition:fade={{duration: 1000, delay: 200}}>
 		<div class="title-top">{top}</div>
 		<div class="line" />   <!-- ---------------- -->
 		<div class="title-bottom">{bottom}</div>
@@ -50,7 +49,7 @@
 
 		text-align: center;
 
-        // background: linear-gradient(to bottom, rgba(47, 68, 0, 0) 0%,rgba(47, 68, 0, 100%))
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%,var(--lowerthird-bg-color));
 	}
 
 	.title-top {
