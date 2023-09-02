@@ -29,8 +29,6 @@
 				</div>
 			</header>
 
-
-
 			<div class="text-wrapper">
 				<div class="moving-text">
 					<p>
@@ -74,22 +72,23 @@
 		width: 50vw;
 		height: 100vh;
 		padding: 4vh;
+		padding-right: 20vw;
 		text-align: center;
 		display: flex;
 		flex-direction: column;
-		box-sizing: border-box;
+		// box-sizing: border-box;
 		overflow-y: hidden;
 
 		background: linear-gradient(to right, var(--lowerthird-bg-color) 0%, rgba(0, 0, 0, 0) 100%);
 
 		.headline {
 			@include headline;
-			font-size: 4em;
+			font-size: 6vh;
 		}
 
 		.description {
 			@include subtitle;
-			font-size: 2em;
+			font-size: 3vh;
 		}
 
 		p {
