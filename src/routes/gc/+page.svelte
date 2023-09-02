@@ -22,11 +22,14 @@
 		<div class="comunhão" in:fly={{ x: -20, duration: 2000 }} out:fade={{ duration: 1000 }}>
 			<header>
 				<div class="headline">Comunhão Espiritual</div>
+				<div class="line" />
 				<div class="description">
 					As pessoas que não podem comungar,
 					<br />façam agora a comunhão espiritual.
 				</div>
 			</header>
+
+
 
 			<div class="text-wrapper">
 				<div class="moving-text">
@@ -70,10 +73,12 @@
 	.comunhão {
 		width: 50vw;
 		height: 100vh;
-		padding: 5vh;
+		padding: 4vh;
 		text-align: center;
 		display: flex;
 		flex-direction: column;
+		box-sizing: border-box;
+		overflow-y: hidden;
 
 		background: linear-gradient(to right, var(--lowerthird-bg-color) 0%, rgba(0, 0, 0, 0) 100%);
 
@@ -101,6 +106,15 @@
 		.description,
 		.text-wrapper {
 			filter: $font-shadow-filter;
+		}
+
+		.line {
+			min-height: 2px;
+			width: 75%;
+			margin: 0px auto;
+
+			background-color: white;
+			// animation: line 2s;
 		}
 	}
 </style>
