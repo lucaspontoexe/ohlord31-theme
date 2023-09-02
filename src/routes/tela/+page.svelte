@@ -81,5 +81,9 @@
 				font-size: 3em;
 			}
 		}
+
+		.title, .liturgia {
+			filter:	$font-shadow-filter;
+		}
 	}
 </style>
