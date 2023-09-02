@@ -1,9 +1,15 @@
-<script lang="ts">
-	import { cor } from '$lib/GCBackgroundColor';
+<script lang="ts">	
+	import { onMount } from 'svelte';
+	import { colors } from '$lib/GCBackgroundColor';
+	import websocketStore, { fallback } from '$lib/websocketStore';
+	const store = websocketStore('liturgia', fallback.liturgia);
 
-	$: {
-		globalThis.document?.documentElement.style.setProperty('--bg-color', $cor);
-	}
+	onMount(() => {
+		const unsubscribe = store.subscribe(({ cor }) =>
+			globalThis.document?.documentElement.style.setProperty('--lowerthird-bg-color', colors[cor.toLowerCase()] ?? cor)
+		);
+		return unsubscribe;
+	});
 </script>
 
 <slot />
@@ -15,6 +21,6 @@
 	}
 
 	:root {
-		--bg-color: rgb(97, 87, 43);
+		--lowerthird-bg-color: rgb(97, 87, 43);
 	}
 </style>
