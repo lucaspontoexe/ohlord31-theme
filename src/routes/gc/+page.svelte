@@ -3,6 +3,7 @@
 	import qr_pix from '$lib/qr_pix.png';
 
 	import { websocketStore, fallback } from '$lib/websocketStore';
+	import { fade, fly } from 'svelte/transition';
 
 	const lt_display = websocketStore('lower-third-display', fallback['lower-third-display']);
 </script>
@@ -15,15 +16,15 @@
 	{/if}
 
 	{#if $lt_display.layout === 'ofertório'}
-		<div class="pix">
+		<div class="pix" transition:fade={{duration: 1000}}>
 			<!-- por que não só colocar a imagem png aqui? -->
 			<div class="qrcode-container">
 				<img src="{qr_pix}" alt="código qr" />
 			</div>
 			<div class="text">
-				<div class="headline">Faça sua oferta!</div>
-				<div class="line">linha 2</div>
-				<div class="line">linha 3</div>
+				<div class="headline" in:fly={{x: -20, delay: 200, duration: 600}}>Faça sua oferta!</div>
+				<div class="line" in:fly={{x: -20, delay: 400, duration: 600}}>linha 2</div>
+				<div class="line" in:fly={{x: -20, delay: 600, duration: 600}}>linha 3</div>
 			</div>
 		</div>
 	{/if}
