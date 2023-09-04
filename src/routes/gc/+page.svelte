@@ -2,6 +2,7 @@
 	import Standard from './Standard.svelte';
 	import Oferta from './Oferta.svelte';
 	import Comunhão from './Comunhão.svelte';
+	import Debug from '$lib/Debug.svelte';
 
 	import { websocketStore, fallback } from '$lib/websocketStore';
 	const lt_display = websocketStore('lower-third-display', fallback['lower-third-display']);
@@ -12,7 +13,7 @@
 </script>
 
 <main>
-	<div class="debug">{JSON.stringify($lt_display, null, 4)}</div>
+	<Debug data={$lt_display} />
 
 	{#if $lt_display.layout === 'default'}
 		<Standard {...$lt_display.props} />
@@ -28,13 +29,6 @@
 </main>
 
 <style lang="scss">
-	/* body já tá sem margin/padding */
-	$font-shadow-filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
-	.debug {
-		position: fixed;
-		top: 0px;
-	}
-
 	main {
 		/* cor pro debug, apagar depois */
 		// background-color: black;

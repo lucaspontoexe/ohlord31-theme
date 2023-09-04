@@ -11,5 +11,6 @@
 		color: white;
 		top: 20px;
 		left: 20px;
+		z-index: 1;
 	}
 </style>
