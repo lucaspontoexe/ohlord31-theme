@@ -30,8 +30,6 @@
 
 <style lang="scss">
 	main {
-		/* cor pro debug, apagar depois */
-		// background-color: black;
 		width: 100vw;
 		height: 100vh;
 		display: flex;
