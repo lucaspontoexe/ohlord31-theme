@@ -1,3 +1,13 @@
 /* Variables and mixins declared here will be available in all other SCSS files */
 $main-title-color: #FFBD69;
 $font-shadow-filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
+
+@mixin headline {
+	font-family: 'Poppins Bold';
+	color: $main-title-color;
+}
+
+@mixin subtitle {
+	font-family: 'Lora Italic';
+	color: white;
+}
