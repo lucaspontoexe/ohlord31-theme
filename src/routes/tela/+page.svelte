@@ -39,8 +39,7 @@
 		background-color: black; // mudar pra imagem aleatória 1920x1080;
 
 		.title {
-			font-family: 'Poppins Bold';
-			color: $main-title-color;
+			@include headline;
 
 			font-size: 8em;
 			max-width: 50%;
@@ -67,23 +66,21 @@
 			}
 
 			.referencia {
-				// apply poppins
-				font-family: 'Poppins Bold';
-				color: $main-title-color;
+				@include headline;
 
 				font-size: 5em;
 				margin: 0px;
 			}
 
 			.descricao {
-				font-family: 'Lora Italic';
-				color: white;
+				@include subtitle;
 				font-size: 3em;
 			}
 		}
 
-		.title, .liturgia {
-			filter:	$font-shadow-filter;
+		.title,
+		.liturgia {
+			filter: $font-shadow-filter;
 		}
 	}
 </style>

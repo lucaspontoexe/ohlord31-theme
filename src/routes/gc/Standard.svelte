@@ -53,9 +53,8 @@
 	}
 
 	.title-top {
-		font-family: "Lora Italic";
+		@include subtitle;
 		font-size: 48px;
-		color: white;
 		filter: $font-shadow-filter;
 	}
 
