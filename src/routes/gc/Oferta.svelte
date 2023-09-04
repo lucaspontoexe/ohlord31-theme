@@ -9,8 +9,8 @@
 	</div>
 	<div class="text">
 		<div class="headline" in:fly={{ x: -20, delay: 200, duration: 600 }}>Faça sua oferta!</div>
-		<div class="line" in:fly={{ x: -20, delay: 400, duration: 600 }}>linha 2</div>
-		<div class="line" in:fly={{ x: -20, delay: 600, duration: 600 }}>linha 3</div>
+		<div class="line" in:fly={{ x: -20, delay: 400, duration: 600 }}>Use o nosso CNPJ como chave Pix:</div>
+		<div class="line" in:fly={{ x: -20, delay: 600, duration: 600 }}>(cnpj aqui)</div>
 	</div>
 </div>
 
