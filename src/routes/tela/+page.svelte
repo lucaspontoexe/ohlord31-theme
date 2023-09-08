@@ -35,8 +35,9 @@
 		padding: 0px 4vw;
 		gap: 20px;
 		height: 100vh;
+		filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.6));
 
-		background-color: black; // mudar pra imagem aleatória 1920x1080;
+		// background-color: black; // mudar pra imagem aleatória 1920x1080;
 
 		.title {
 			@include headline;
@@ -47,7 +48,12 @@
 
 		.liturgia {
 			text-align: center;
+			min-width: 40%;
 			max-width: 50%;
+
+			display: flex;
+			flex-direction: column;
+			justify-content: space-evenly;
 
 			.leitura {
 				margin: 2em 0px;
@@ -74,13 +80,9 @@
 
 			.descricao {
 				@include subtitle;
-				font-size: 3em;
+				font-size: 2.4em;
+				white-space: pre-line;
 			}
-		}
-
-		.title,
-		.liturgia {
-			filter: $font-shadow-filter;
 		}
 	}
 </style>
