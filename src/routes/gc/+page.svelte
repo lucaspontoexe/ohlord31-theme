@@ -3,8 +3,11 @@
 	import Oferta from './Oferta.svelte';
 	import Comunhão from './Comunhão.svelte';
 	import Debug from '$lib/Debug.svelte';
+	import logoColor from '$lib/logo-color-png-crop.png';
+	import logoCinza from '$lib/logo-png-square-crop.png';
 
 	import { websocketStore, fallback } from '$lib/websocketStore';
+	import { fade } from 'svelte/transition';
 	const lt_display = websocketStore('lower-third-display', fallback['lower-third-display']);
 
 	function clearLowerThird() {
@@ -26,6 +29,13 @@
 	{#if $lt_display.layout === 'comunhão'}
 		<Comunhão on:end={clearLowerThird} />
 	{/if}
+
+	{#if $lt_display.layout === 'socials'}
+		<img src={logoColor} alt="logo colorida" class="logo" transition:fade />
+	{/if}
+
+	<!-- essa logo poderia facilmente ser uma source no OBS -->
+	<img src={logoCinza} alt="logo cinza" class="logo" />
 </main>
 
 <style lang="scss">
@@ -35,5 +45,11 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-end;
+	}
+
+	.logo {
+		position: fixed;
+		right: 5vw;
+		bottom: 5vh;
 	}
 </style>
