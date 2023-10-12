@@ -4,7 +4,7 @@
 	import Comunhão from './Comunhão.svelte';
 	import Debug from '$lib/Debug.svelte';
 	import logoColor from '$lib/logo-color-png-crop.png';
-	import logoCinza from '$lib/logo-png-square-crop.png';
+	// import logoCinza from '$lib/logo-png-square-crop.png';
 
 	import { websocketStore, fallback } from '$lib/websocketStore';
 	import { fade } from 'svelte/transition';
@@ -35,7 +35,7 @@
 	{/if}
 
 	<!-- essa logo poderia facilmente ser uma source no OBS -->
-	<img src={logoCinza} alt="logo cinza" class="logo" />
+	<!-- <img src={logoCinza} alt="logo cinza" class="logo" /> -->
 </main>
 
 <style lang="scss">
