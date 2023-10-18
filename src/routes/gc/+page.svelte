@@ -16,7 +16,7 @@
 </script>
 
 <main>
-	<Debug data={$lt_display} />
+	<!-- <Debug data={$lt_display} /> -->
 
 	{#if $lt_display.layout === 'default'}
 		<Standard {...$lt_display.props} />
