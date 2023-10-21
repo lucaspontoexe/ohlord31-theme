@@ -1,7 +1,7 @@
 import { readable } from 'svelte/store';
-import websocketStore, { fallback } from './websocketStore';
+import { websocketStore as websocketStore2, fallback } from '$lib/websocketStore2';
 
-const store = websocketStore('liturgia', fallback.liturgia);
+const store = websocketStore2('liturgia', fallback.liturgia);
 
 export const gradients: Record<string,string> = {
 	verde:      'background: linear-gradient(to bottom, rgba(47, 68,  0, 0) 0%, rgba(47, 68,  0, 1) 100%)',

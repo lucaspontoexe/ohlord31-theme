@@ -7,9 +7,10 @@
 	// import logoCinza from '$lib/logo-png-square-crop.png';
 	import { onMount } from "svelte";
 
-	import { websocketStore, fallback } from '$lib/websocketStore';
+	import { websocketStore as websocketStore2, fallback } from '$lib/websocketStore2';
+
 	import { fade } from 'svelte/transition';
-	const lt_display = websocketStore('lower-third-display', fallback['lower-third-display']);
+	const lt_display = websocketStore2('lower-third-display', fallback['lower-third-display']);
 
 	function clearLowerThird() {
 		$lt_display = { id: '_none', layout: 'none', props: { top: '', bottom: '', duration: 0 } };
