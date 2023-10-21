@@ -46,7 +46,9 @@ export function websocketStore<InitialType>(scope: string, initialValue: Initial
 		reopenTimeoutHandler: ReturnType<typeof setTimeout> | undefined;
 	let reopenCount = 0;
 
-	if (!browser) return readable(initialValue);
+	if (!browser) {
+		return readable(initialValue);
+	}
 
 	function reopenTimeout() {
 		const n = reopenCount;
