@@ -49,19 +49,21 @@ function handleMessage(event: MessageEvent) {
 	console.log('acabou de aparecer o evento', incomingData.type);
 	switch (incomingData.type) {
 		case 'app-state':
-			Object.entries(incomingData.payload).forEach(([scope, value]) => {
+			Object.entries(incomingData.payload).forEach(([key, value]) => {
 				// save to local state
-				localAppState.set(scope, value);
+				localAppState.set(key, value);
 
 				// rodar callback de subscription com os valores do appstate
 				// em português: chegou app-state novo, é pra notificar todo mundo
-				subscribers.get(scope)?.forEach((callback) => callback(value));
+				subscribers.get(key)?.forEach((callback) => callback(value));
 			});
 			break;
 
 		case 'set-state':
-			subscribers.get(incomingData.scope)?.forEach((callback) => callback(incomingData.payload));
-			localAppState.set(incomingData.scope, incomingData.payload);
+			const {scope: key, payload: value} = incomingData;
+
+			localAppState.set(key, value);
+			subscribers.get(key)?.forEach((callback) => callback(value));
 			break;
 
 		default:
