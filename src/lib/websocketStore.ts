@@ -29,12 +29,6 @@ const socketAddress = `ws://${browser ? location.hostname : 'localhost'}:3000/`;
 // não importa quantos objetos estejam usando
 let socket: WebSocket | undefined;
 
-try {
-	socket = new WebSocket(socketAddress);
-} catch (error) {
-	console.warn('tem que iniciar o servidor, né?');
-}
-
 // subscriptions fica por fora também:
 // agora a lib funciona do jeito que tem que ser.
 const subscriptions = new Set<Subscription>();
