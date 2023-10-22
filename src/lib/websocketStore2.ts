@@ -6,7 +6,6 @@
  - o objeto que retorna da função tem aqueles métodos pra virar store
  - uma única conexão por janela (mas se não tiver como, não tem problema)
 
-
  */
 
 import { browser } from '$app/environment';
@@ -19,16 +18,16 @@ const localAppState = new Map<string, unknown>();
 
 function createSocket() {
 	if (socket?.readyState === WebSocket.CONNECTING || socket?.readyState === WebSocket.OPEN) return;
-	console.log('mais um socket criado');
-
+	
 	try {
 		socket = new WebSocket(socketAddress);
+		console.log('mais um socket criado');
 
 		socket.onerror = (event) => {
 			handleError(event);
 			return;
 		};
-		//socket.onclose => reopen
+		socket.onclose = () => setTimeout(createSocket, 5000);
 		socket.onmessage = handleMessage;
 	} catch (error) {
 		handleError(error);
