@@ -17,7 +17,7 @@ let socket: WebSocket | undefined;
 const subscribers = new Map<string, Set<any>>();
 const localAppState = new Map<string, unknown>();
 
-function createSocketAgoraVai() {
+function createSocket() {
 	if (socket?.readyState === WebSocket.CONNECTING || socket?.readyState === WebSocket.OPEN) return;
 	console.log('mais um socket criado');
 
@@ -38,7 +38,7 @@ function createSocketAgoraVai() {
 	function handleError(error: unknown) {
 		console.error('ws error', error);
 		socket = undefined;
-		setTimeout(createSocketAgoraVai, 5000);
+		setTimeout(createSocket, 5000);
 	}
 }
 
@@ -79,7 +79,7 @@ function sendMessage(value: any) {
 
 export function websocketStore<InitialType>(scope: string, initialValue: InitialType) {
 	if (!browser) return readable(initialValue);
-	createSocketAgoraVai();
+	createSocket();
 
 	return {
 		set(value: InitialType) {
