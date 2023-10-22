@@ -93,7 +93,8 @@ export function websocketStore<InitialType>(scope: string, initialValue: Initial
 
 			return function unsubscribe() {
 				subscribers.get(scope)?.delete(callback);
-				if (subscribers.size === 0) subscribers.delete(scope);
+				if (subscribers.get(scope)?.size === 0) subscribers.delete(scope);
+				// if (subscribers.size === 0) endWSConnection
 			};
 		}
 	};
