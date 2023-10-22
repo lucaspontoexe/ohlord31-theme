@@ -5,9 +5,10 @@
 	// import Debug from '$lib/Debug.svelte';
 	import logoColor from '$lib/logo-color-png-crop.png';
 	// import logoCinza from '$lib/logo-png-square-crop.png';
+	import { websocketStore as websocketStore2 } from '$lib/websocketStore2'	
+	import { fallback } from '$lib/fallback';
+	
 	import { onMount } from "svelte";
-
-	import { websocketStore as websocketStore2, fallback } from '$lib/websocketStore2';
 
 	import { fade } from 'svelte/transition';
 	const lt_display = websocketStore2('lower-third-display', fallback['lower-third-display']);

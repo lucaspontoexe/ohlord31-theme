@@ -1,5 +1,6 @@
 import { readable } from 'svelte/store';
-import { websocketStore as websocketStore2, fallback } from '$lib/websocketStore2';
+import { websocketStore as websocketStore2 } from '$lib/websocketStore2';
+import { fallback } from './fallback';
 
 const store = websocketStore2('liturgia', fallback.liturgia);
 
