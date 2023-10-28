@@ -5,6 +5,7 @@
 	const items = websocketStore('idle-screen-slides', fallback['idle-screen-slides']);
 	// cortar pra quando a gente componentizar esse
 	const liturgia = websocketStore('liturgia', fallback['liturgia']);
+	import logo from '$lib/sjt-logo-white.png';
 </script>
 
 <main>
@@ -22,10 +23,12 @@
 				</div>
 			{/each}
 		</div>
+
+		<img src={logo} alt="sjt logo" class="logo" />
 	</section>
 </main>
 
-<Debug data={$items} />
+<!-- <Debug data={$items} /> -->
 
 <style lang="scss">
 	.tela-liturgia {
@@ -35,7 +38,7 @@
 		padding: 0px 4vw;
 		gap: 20px;
 		height: 100vh;
-		filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.6));
+		filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.6));
 
 		// background-color: black; // mudar pra imagem aleatória 1920x1080;
 
@@ -83,6 +86,14 @@
 				font-size: 2.4em;
 				white-space: pre-line;
 			}
+		}
+
+		.logo {
+			position: fixed;
+			bottom: 38px;
+			left: 50%;
+			transform: translate(-50%);
+			height: 12vh;
 		}
 	}
 </style>
