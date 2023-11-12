@@ -13,7 +13,8 @@ import { readable } from 'svelte/store';
 const socketAddress = `ws://${browser ? location.hostname : 'localhost'}:3000/`;
 let socket: WebSocket | undefined;
 
-const subscribers = new Map<string, Set<any>>();
+type subscriberCallback = ((value: any) => void);
+const subscribersByKey = new Map<string, Set<subscriberCallback>>();
 const localAppState = new Map<string, unknown>();
 
 function createSocket() {
@@ -54,7 +55,7 @@ function handleMessage(event: MessageEvent) {
 
 				// rodar callback de subscription com os valores do appstate
 				// em português: chegou app-state novo, é pra notificar todo mundo
-				subscribers.get(key)?.forEach((callback) => callback(value));
+				subscribersByKey.get(key)?.forEach((callback) => callback(value));
 			});
 			break;
 
@@ -62,7 +63,7 @@ function handleMessage(event: MessageEvent) {
 			const {scope: key, payload: value} = incomingData;
 
 			localAppState.set(key, value);
-			subscribers.get(key)?.forEach((callback) => callback(value));
+			subscribersByKey.get(key)?.forEach((callback) => callback(value));
 			break;
 
 		default:
@@ -87,12 +88,12 @@ export function websocketStore<InitialType>(scope: string, initialValue: Initial
 
 		subscribe(callback: (value: typeof initialValue) => void) {
 			callback(initialValue);
-			if (!subscribers.has(scope)) subscribers.set(scope, new Set());
-			subscribers.get(scope)?.add(callback);
+			if (!subscribersByKey.has(scope)) subscribersByKey.set(scope, new Set());
+			subscribersByKey.get(scope)?.add(callback);
 
 			return function unsubscribe() {
-				subscribers.get(scope)?.delete(callback);
-				if (subscribers.get(scope)?.size === 0) subscribers.delete(scope);
+				subscribersByKey.get(scope)?.delete(callback);
+				if (subscribersByKey.get(scope)?.size === 0) subscribersByKey.delete(scope);
 				// if (subscribers.size === 0) endWSConnection
 			};
 		}
