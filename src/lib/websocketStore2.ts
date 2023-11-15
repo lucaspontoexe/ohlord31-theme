@@ -1,12 +1,6 @@
-/**
- * 
- *antes de qualquer coisa:
+// reimplementação da websocket store. 
+// reescrita na mão, sem o "port gambiarra".
 
- - é uma svelte store pra sincronizar via websocket
- - o objeto que retorna da função tem aqueles métodos pra virar store
- - uma única conexão por janela (mas se não tiver como, não tem problema)
-
- */
 
 import { browser } from '$app/environment';
 import { readable } from 'svelte/store';
@@ -67,6 +61,7 @@ function handleMessage(event: MessageEvent) {
 			break;
 
 		default:
+			console.warn('apareceu um evento desconhecido.', incomingData)
 			break;
 	}
 }
