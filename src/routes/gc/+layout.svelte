@@ -1,7 +1,9 @@
 <script lang="ts">	
 	import { onMount } from 'svelte';
 	import { colors } from '$lib/GCBackgroundColor';
-	import websocketStore, { fallback } from '$lib/websocketStore';
+	import { websocketStore } from '$lib/websocketStore2';
+	import { fallback } from '$lib/fallback';
+
 	const store = websocketStore('liturgia', fallback.liturgia);
 
 	onMount(() => {
