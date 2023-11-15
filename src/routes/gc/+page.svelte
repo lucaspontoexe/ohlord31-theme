@@ -2,7 +2,7 @@
 	import Standard from './Standard.svelte';
 	import Oferta from './Oferta.svelte';
 	import Comunhão from './Comunhão.svelte';
-	// import Debug from '$lib/Debug.svelte';
+	import Debug from '$lib/Debug.svelte';
 	import logoColor from '$lib/logo-color-png-crop.png';
 	// import logoCinza from '$lib/logo-png-square-crop.png';
 	import { websocketStore } from '$lib/websocketStore2'	
@@ -16,13 +16,11 @@
 	function clearLowerThird() {
 		$lt_display = { id: '_none', layout: 'none', props: { top: '', bottom: '', duration: 0 } };
 	}
-
-	// debug que deixaria macgyver de queixo caído
-	onMount(() => {setTimeout(() => console.log(lt_display), 15000)});
 </script>
 
 <main>
-	<!-- <Debug data={$lt_display} /> -->
+
+	<Debug data={$lt_display} />
 
 	{#if $lt_display.layout === 'default'}
 		<Standard {...$lt_display.props} />
