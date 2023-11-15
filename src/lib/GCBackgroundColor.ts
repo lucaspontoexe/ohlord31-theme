@@ -1,3 +1,4 @@
+// foi bom, mas esse arquivo tá sem uso. tá tudo no arquivo /routes/gc/+layout.svelte
 import { readable } from 'svelte/store';
 import { websocketStore } from '$lib/websocketStore2';
 import { fallback } from './fallback';
