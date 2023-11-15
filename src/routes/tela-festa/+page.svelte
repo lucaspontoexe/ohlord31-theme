@@ -25,7 +25,7 @@
 	</section>
 </main>
 
-<!-- <Debug data={$items} />	 -->
+<Debug data={$items} />	
 
 <style lang="scss">
 	@import './fonts.scss';
