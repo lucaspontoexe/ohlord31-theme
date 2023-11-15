@@ -1,8 +1,11 @@
 <script lang="ts">
+	import { dev } from '$app/environment';
 	export let data: any;
 </script>
 
-<pre class="debug">{JSON.stringify(data, null, 4)}</pre>
+{#if dev}
+	<pre class="debug">{JSON.stringify(data, null, 4)}</pre>
+{/if}
 
 <style lang="scss">
 	pre.debug {
