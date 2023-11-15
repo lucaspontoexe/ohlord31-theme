@@ -1,9 +1,10 @@
 import { readable } from 'svelte/store';
-import { websocketStore as websocketStore2 } from '$lib/websocketStore2';
+import { websocketStore } from '$lib/websocketStore2';
 import { fallback } from './fallback';
 
-const store = websocketStore2('liturgia', fallback.liturgia);
+const store = websocketStore('liturgia', fallback.liturgia);
 
+// prettier-ignore
 export const gradients: Record<string,string> = {
 	verde:      'background: linear-gradient(to bottom, rgba(47, 68,  0, 0) 0%, rgba(47, 68,  0, 1) 100%)',
 	roxo:       'background: linear-gradient(to bottom, rgba(49, 47, 89, 0) 0%, rgba(49, 47, 89, 1) 100%)',
@@ -11,6 +12,7 @@ export const gradients: Record<string,string> = {
 	branco:     'background: linear-gradient(to bottom, rgba(97, 87, 43, 0) 0%, rgba(97, 84, 43, 1) 100%)'
 };
 
+// prettier-ignore
 export const colors: Record<string,string> = {
 	verde:      'rgb(47, 68,  0)',
 	roxo:       'rgb(49, 47, 89)',
