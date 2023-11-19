@@ -78,7 +78,7 @@
 			.referencia {
 				@include headline;
 
-				font-size: 5em;
+				font-size: 4.5em;
 				margin: 0px;
 			}
 
