@@ -1,14 +1,14 @@
 
 export const fallback = {
 	liturgia: {
-		nome: 'São João Maria Vianney - Memória',
+		nome: 'Santa Missa',
 		cor: 'Branco',
 		leituras: [
-			{ nome: '1ª Leitura', referencia: 'Lv 23,1.4-11.15-16.27.34b-37' },
+			{ nome: '1ª Leitura', referencia: 'Leitura' },
 			{
 				nome: 'Salmo Responsorial',
-				referencia: 'Sl 80',
-				descricao: 'Exultai no Senhor, nossa força.'
+				referencia: 'Sl 01',
+				descricao: 'Salmo'
 			},
 			{ nome: 'Evangelho', referencia: 'Mt 13,54-58' }
 		],
@@ -18,14 +18,14 @@ export const fallback = {
 		{
 			id: '7_o3qPjcN',
 			layout: 'default',
-			props: { top: '1ª Leitura', bottom: 'Lv 23,1.4-11.15-16.27.34b-37', duration: 0 }
+			props: { top: '1ª Leitura', bottom: 'Leitura', duration: 0 }
 		},
 		{
 			id: 'CKSXzlF5u5',
 			layout: 'default',
 			props: {
-				top: 'Salmo Responsorial: Sl 80',
-				bottom: 'Exultai no Senhor, nossa força.',
+				top: 'Salmo Responsorial: Sl 01',
+				bottom: 'Salmo',
 				duration: 0
 			}
 		},
@@ -37,7 +37,7 @@ export const fallback = {
 		{
 			id: 'H3sR4DXiDA',
 			layout: 'default',
-			props: { top: 'Oração da Assembleia', bottom: 'funciona', duration: 0 }
+			props: { top: 'Oração da Assembleia', bottom: '..', duration: 0 }
 		},
 		{ id: 'ooXyGOADzw', layout: 'ofertório', props: { duration: 0 } },
 		{ id: 'W56IHNTYGg', layout: 'comunhão', props: {} }
@@ -62,6 +62,6 @@ export const fallback = {
 	'lower-third-display': {
 		id: '_none',
 		layout: 'none',
-		props: { top: 'Oração da Assembleia', bottom: 'funciona', duration: 0 }
+		props: { top: 'Oração da Assembleia', bottom: '..', duration: 0 }
 	}
 };
