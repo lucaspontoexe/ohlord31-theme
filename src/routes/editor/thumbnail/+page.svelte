@@ -3,16 +3,27 @@
 	import {fallback} from '$lib/fallback';
 	import { onMount } from 'svelte';
 	import { drawCanvas } from './drawThumbnail';
+	import background from '$lib/canvas-background.webp';
 
 	const liturgia = websocketStore('liturgia', fallback['liturgia']);
 	// podia usar action? podia
 	let canvas: HTMLCanvasElement;
-	const theTitle = { top: 'aaaa', main: 'bbb', bottom: 'cccc' };
 	// TODO: copiar aquele código regex + salvar thumbnail + copiar pra clipboard
+
+	function loadImage(url: string): Promise<HTMLImageElement> {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        (img.src = url), (img.onload = () => resolve(img)), (img.onerror = reject);
+      });
+    }
+
+	// tem como usar await que eu tô ligado
+	let bg: HTMLImageElement;
+	loadImage(background).then(image => bg = image);
+
 	onMount(() => {
-		drawCanvas(canvas, theTitle, { background: new Image() }, true);
 		const unsubscribe = liturgia.subscribe(newValue => {
-			drawCanvas(canvas, {top: 'ih', main: newValue.nome, bottom: 'ala'}, { background: new Image() }, true);
+			drawCanvas(canvas, {top: 'ih', main: newValue.nome, bottom: 'ala'}, { background: bg }, false);
 		})
 		return unsubscribe;
 	});
