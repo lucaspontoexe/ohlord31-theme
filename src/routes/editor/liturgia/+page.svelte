@@ -1,28 +1,60 @@
 <script lang="ts">
 	import { websocketStore } from '$lib/websocketStore';
-    import type { PageData } from './$types';
-    export let data: PageData;
+	import type { PageData } from './$types';
+	export let data: PageData;
 	const liturgia = websocketStore('liturgia', data.initialState);
 </script>
 
-
 <main>
-    <h1>liturgia</h1>
-    <p>amém</p>
+	<h1>liturgia</h1>
+	<p>amém</p>
 
-    <header>
-        <p>{$liturgia.nome}</p>
-        <p>cor: {$liturgia.cor}</p>
-    </header>
+    <h2>título / cor</h2>
+	<header>
+		<label>
+			Nome
+			<input type="text" bind:value={$liturgia.nome} />
+		</label>
 
-    <h2>leituras</h2>
-    <div class="blocks">
-        {#each $liturgia.leituras as leitura}
-            <div>{leitura.nome}</div>
-            <div>{leitura.referencia}</div>
-            {#if leitura.descricao}
-                <div>{leitura.descricao}</div>
-            {/if}
-        {/each}
-    </div>
+		<label>
+			Cor
+			<input type="text" bind:value={$liturgia.cor} />
+		</label>
+	</header>
+
+	<h2>leituras</h2>
+	<div class="blocks">
+		{#each $liturgia.leituras as leitura}
+			<div class="block">
+				<label>
+					Nome
+					<input type="text" bind:value={leitura.nome} />
+				</label>
+
+				<label>
+					Referência
+					<input type="text" bind:value={leitura.referencia} />
+				</label>
+				<label>
+					Descrição / Refrão Salmo
+					<textarea bind:value={leitura.descricao} />
+				</label>
+                <div class="addremove">
+                    (adicionar item/remover acima)
+                </div>
+			</div>
+		{/each}
+	</div>
+
+    <button>aplicar isso nos GCs</button>
 </main>
+
+<style>
+	label {
+		display: flex;
+		flex-direction: column;
+	}
+	.block {
+		margin-bottom: 1em;
+	}
+</style>
