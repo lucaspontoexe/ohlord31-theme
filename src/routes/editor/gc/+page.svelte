@@ -41,5 +41,6 @@
 	.thething {
 		display: flex;
 		flex-direction: column;
+		margin-bottom: 1em;
 	}
 </style>
