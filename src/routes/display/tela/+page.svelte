@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { websocketStore, fallback } from '$lib/websocketStore';
+	import { websocketStore } from '$lib/websocketStore2';
+	import {fallback} from '$lib/fallback';
 
 	// é só a tela de liturgia mesmo
 	const liturgia = websocketStore('liturgia', fallback['liturgia']);

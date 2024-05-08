@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { websocketStore } from '$lib/websocketStore';
+	import { websocketStore } from '$lib/websocketStore2';
 	import type { PageData } from './$types';
 	export let data: PageData;
 	const liturgia = websocketStore('liturgia', data.initialState);
@@ -8,6 +8,7 @@
 <main>
 	<h1>liturgia</h1>
 	<p>amém</p>
+	<p>tem que decidir essa UX da edição</p>
 
     <h2>título / cor</h2>
 	<header>
