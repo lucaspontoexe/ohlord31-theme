@@ -1,8 +1,21 @@
-<script>
+<script lang="ts">
 	import { fallback } from '$lib/fallback';
 	import { websocketStore } from '$lib/websocketStore2';
+	import type { PageData } from './$types';
 
-	const lower_thirds = websocketStore('lower-third-items', fallback['lower-third-items']);
+    export let data: PageData;
+
+	const lower_thirds = websocketStore('lower-third-items', data.initialState);
+	const display = websocketStore('lower-third-display', fallback['lower-third-display']);
+    const no_display = {
+		id: '_none',
+		layout: 'none',
+		props: { top: '', bottom: '', duration: 0 }
+	}
+
+    function setDisplay(toDisplay: any) {
+        $display = toDisplay;
+    }
 </script>
 
 <main>
@@ -18,7 +31,7 @@
 				{:else}
 					<p>{theThing.layout}</p>
 				{/if}
-                <button>Mostar na tela</button>
+                <button on:click={() => setDisplay(theThing)}>Mostar na tela</button>
 			</div>
 		{/each}
 	</div>
