@@ -1,15 +1,15 @@
-<!-- <script lang="ts">
-	import type { LayoutData } from './$types';
+<script lang="ts">
+    import { base } from "$app/paths";
+</script>
 
-	export let data: LayoutData;
-</script> -->
-
-<main>
+<header>
 	<nav>
-        <a href="liturgia">liturgia |</a>
-        <a href="thumbnail">thumbnail |</a>
-        <a href="gc">gc</a>
+        <a href="{base}/editor/gc">gc |</a>
+        <a href="{base}/editor/liturgia">liturgia |</a>
+        <a href="{base}/editor/thumbnail">thumbnail</a>
     </nav>
 
     <pre>tem que copiar o tema do OBS aqui</pre>
-</main>
+</header>
+
+<slot></slot>

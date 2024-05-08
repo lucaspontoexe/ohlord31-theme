@@ -21,7 +21,7 @@ const config = {
 		// See https://kit.svelte.dev/docs/adapters for more information about adapters.
 		adapter: adapter({fallback: undefined, precompress: false}),
 		paths: {
-			base: '/v31',
+			// base: '/v31',
 		}
 	}
 };
