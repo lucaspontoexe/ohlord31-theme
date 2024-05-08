@@ -1,7 +1,9 @@
+import { loadState } from '$lib/loadState';
 
 /** @type {import('./$types').PageServerLoad} */
-export async function load({ params, fetch }) {
+export async function load({ fetch }) {
 	return {
-        initialState: await fetch('http://localhost:3000/api/state/liturgia').then(r => r.json())
+        initialState: await loadState('liturgia')
 	};
 }
+
