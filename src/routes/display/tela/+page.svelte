@@ -1,10 +1,7 @@
 <script lang="ts">
 	import { websocketStore, fallback } from '$lib/websocketStore';
-	import Debug from '$lib/Debug.svelte';
 
-	const items = websocketStore('idle-screen-slides', fallback['idle-screen-slides']);
-	// cortar pra quando a gente componentizar esse 
-	// [spoiler: provavelmente não vamos. é só essa tela mesmo].
+	// é só a tela de liturgia mesmo
 	const liturgia = websocketStore('liturgia', fallback['liturgia']);
 	import logo from '$lib/sjt-logo-white.png';
 </script>
@@ -28,8 +25,6 @@
 		<img src={logo} alt="sjt logo" class="logo" />
 	</section>
 </main>
-
-<Debug data={$items} />
 
 <style lang="scss">
 	.tela-liturgia {
