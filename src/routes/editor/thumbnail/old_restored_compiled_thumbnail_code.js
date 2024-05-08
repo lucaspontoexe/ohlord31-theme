@@ -292,7 +292,7 @@ function gt(s, a, o) {
   it.title = "editor das thumbnails";
   let canvasElement,
     title = { top: "", main: "", bottom: "" },
-    g = {},
+    imgElementWrapper = {},
     textToCopy = liturgia.nome + " | DD/MM/AAAA",
     p = !1;
   async function w() {
@@ -305,7 +305,7 @@ function gt(s, a, o) {
   }
   const z = () => navigator.clipboard.writeText(textToCopy);
   async function d() {
-    function l() {
+    function formatDate() {
       const u = new Date(),
         c = new Intl.DateTimeFormat("pt-BR", { dateStyle: "long" })
           .format(u)
@@ -313,27 +313,22 @@ function gt(s, a, o) {
           .slice(0, 3);
       return (c[0] = c[0].padStart(2, "0")), c.join(" ");
     }
-    function v(u) {
-      return new Promise((k, c) => {
-        const T = new Image();
-        (T.src = u), (T.onload = () => k(T)), (T.onerror = c);
+    function loadImage(url) {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        (img.src = url), (img.onload = () => resolve(img)), (img.onerror = reject);
       });
     }
     const { nome: nome } = await axiosFetch("/state/liturgia");
     o(
       1,
       (title.main = nome.replace(
-        /(\bd[oae]s?|,) /,
-        (u) =>
-          u +
-          `
-`
-      )),
+        /(\bd[oae]s?|,) /, (u) => u + '\n')),
       title
     ),
-      o(1, (title.bottom = l()), title),
+      o(1, (title.bottom = formatDate()), title),
       o(2, (textToCopy = nome + " | " + new Intl.DateTimeFormat("pt-BR").format(new Date()))),
-      o(5, (g.background = await v(backgroundImage)), g),
+      o(5, (imgElementWrapper.background = await loadImage(backgroundImage)), imgElementWrapper),
       await document.fonts.ready,
       o(6, (p = !0));
   }
@@ -354,9 +349,9 @@ function gt(s, a, o) {
   }
   return (
     (s.$$.update = () => {
-      s.$$.dirty & 99 && p && drawCanvas(canvasElement, title, g);
+      s.$$.dirty & 99 && p && drawCanvas(canvasElement, title, imgElementWrapper);
     }),
-    [canvasElement, title, textToCopy, w, z, g, p, C, b, x, j]
+    [canvasElement, title, textToCopy, w, z, imgElementWrapper, p, C, b, x, j]
   );
 }
 class kt extends SvelteComponent {
