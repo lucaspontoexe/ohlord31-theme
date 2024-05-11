@@ -3,19 +3,16 @@
 	import { websocketStore } from '$lib/websocketStore2';
 	import type { PageData } from './$types';
 
-    export let data: PageData;
+	export let data: PageData;
+	type ts_feliz = Fallback['lower-third-display'];
 
-	const lower_thirds = websocketStore('lower-third-items', data.initialState as Fallback['lower-third-items']);
-	const display = websocketStore('lower-third-display', fallback['lower-third-display']);
-    const no_display = {
+	const lower_thirds = websocketStore('lower-third-items', data.initialState);
+	const display = websocketStore<ts_feliz>('lower-third-display', fallback['lower-third-display']);
+	const no_display = {
 		id: '_none',
 		layout: 'none',
 		props: { top: '', bottom: '', duration: 0 }
-	}
-
-    function setDisplay(toDisplay: any) {
-        $display = toDisplay;
-    }
+	};
 </script>
 
 <main>
@@ -23,15 +20,20 @@
 	<p>copiar tema do OBS etc</p>
 
 	<div class="blocks">
-		{#each $lower_thirds as theThing}
+		{#each $lower_thirds as lt}
 			<div class="thething">
-				{#if theThing.layout === 'default'}
-					<input type="text" bind:value={theThing.props.top} />
-					<textarea bind:value={theThing.props.bottom} />
+				{#if lt.layout === 'default'}
+					<input type="text" bind:value={lt.props.top} />
+					<textarea bind:value={lt.props.bottom} />
 				{:else}
-					<p>{theThing.layout}</p>
+					<p>{lt.layout}</p>
 				{/if}
-                <button on:click={() => setDisplay(theThing)}>Mostar na tela</button>
+
+				{#if lt.id !== $display.id}
+					<button on:click={() => ($display = lt)}>Mostar na tela</button>
+				{:else}
+					<button on:click={() => ($display = no_display)}>ih, sumiu</button>
+				{/if}
 			</div>
 		{/each}
 	</div>

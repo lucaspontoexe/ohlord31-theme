@@ -1,9 +1,8 @@
 <script lang="ts">
-	import type { Fallback } from '$lib/fallback';
 	import { websocketStore } from '$lib/websocketStore2';
 	import type { PageData } from './$types';
 	export let data: PageData;
-	const liturgia = websocketStore('liturgia', data.initialState as Fallback['liturgia']);
+	const liturgia = websocketStore('liturgia', data.initialState);
 </script>
 
 <main>
