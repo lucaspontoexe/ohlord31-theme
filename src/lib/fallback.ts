@@ -91,7 +91,7 @@ export type Fallback = {
 		props: {
 			top?: string;
 			bottom?: string;
-			duration: number;
+			duration?: number;
 		};
 	};
 };
