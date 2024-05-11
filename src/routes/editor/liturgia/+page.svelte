@@ -1,8 +1,9 @@
 <script lang="ts">
+	import type { Fallback } from '$lib/fallback';
 	import { websocketStore } from '$lib/websocketStore2';
 	import type { PageData } from './$types';
 	export let data: PageData;
-	const liturgia = websocketStore('liturgia', data.initialState);
+	const liturgia = websocketStore('liturgia', data.initialState as Fallback['liturgia']);
 </script>
 
 <main>
@@ -10,7 +11,7 @@
 	<p>amém</p>
 	<p>tem que decidir essa UX da edição</p>
 
-    <h2>título / cor</h2>
+	<h2>título / cor</h2>
 	<header>
 		<label>
 			Nome
@@ -40,14 +41,12 @@
 					Descrição / Refrão Salmo
 					<textarea bind:value={leitura.descricao} />
 				</label>
-                <div class="addremove">
-                    (adicionar item/remover acima)
-                </div>
+				<div class="addremove">(adicionar item/remover acima)</div>
 			</div>
 		{/each}
 	</div>
 
-    <button>aplicar isso nos GCs</button>
+	<button>aplicar isso nos GCs</button>
 </main>
 
 <style>

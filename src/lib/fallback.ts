@@ -1,4 +1,3 @@
-
 export const fallback = {
 	liturgia: {
 		nome: 'Santa Missa',
@@ -64,4 +63,35 @@ export const fallback = {
 		layout: 'none',
 		props: { top: 'Oração da Assembleia', bottom: '..', duration: 0 }
 	}
+};
+
+export type Fallback = {
+	liturgia: {
+		nome: string;
+		cor: string;
+		leituras: {
+			nome: string;
+			referencia: string;
+			descricao?: string;
+		}[];
+		savedAt?: number;
+	};
+	'lower-third-items': {
+		id: string;
+		layout: 'default' | 'ofertório' | 'comunhão' | string;
+		props: {
+			top?: string;
+			bottom?: string;
+			duration?: number;
+		};
+	}[];
+	'lower-third-display': {
+		id: string;
+		layout: 'default' | 'ofertório' | 'comunhão' | string;
+		props: {
+			top?: string;
+			bottom?: string;
+			duration: number;
+		};
+	};
 };

@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { fallback } from '$lib/fallback';
+	import { fallback, type Fallback } from '$lib/fallback';
 	import { websocketStore } from '$lib/websocketStore2';
 	import type { PageData } from './$types';
 
     export let data: PageData;
 
-	const lower_thirds = websocketStore('lower-third-items', data.initialState);
+	const lower_thirds = websocketStore('lower-third-items', data.initialState as Fallback['lower-third-items']);
 	const display = websocketStore('lower-third-display', fallback['lower-third-display']);
     const no_display = {
 		id: '_none',
