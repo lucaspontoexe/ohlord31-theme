@@ -19,7 +19,7 @@
 	<h1>editor gc</h1>
 	<p>copiar tema do OBS etc</p>
 
-	<div class="blocks">
+	<div class="block">
 		{#each $lower_thirds as lt}
 			<div class="thething">
 				{#if lt.layout === 'default'}
@@ -40,6 +40,26 @@
 </main>
 
 <style>
+	main {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.block {
+		width: 100%;
+		max-width: 600px;
+		box-sizing: border-box;
+		margin-bottom: 1em;
+	}
+
+	textarea {
+		line-height: 1.2em;
+		resize: vertical;
+		min-height: 3.2em;
+		max-height: 50vh;
+	}
+
 	.thething {
 		display: flex;
 		flex-direction: column;
