@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { websocketStore } from '$lib/websocketStore2';
-	import {fallback} from '$lib/fallback';
+	import { fallback } from '$lib/fallback';
 	import { onMount } from 'svelte';
 	import { drawCanvas } from './drawThumbnail';
 	import background from '$lib/canvas-background.webp';
@@ -11,20 +11,25 @@
 	// TODO: copiar aquele código regex + salvar thumbnail + copiar pra clipboard
 
 	function loadImage(url: string): Promise<HTMLImageElement> {
-      return new Promise((resolve, reject) => {
-        const img = new Image();
-        (img.src = url), (img.onload = () => resolve(img)), (img.onerror = reject);
-      });
-    }
+		return new Promise((resolve, reject) => {
+			const img = new Image();
+			(img.src = url), (img.onload = () => resolve(img)), (img.onerror = reject);
+		});
+	}
 
 	// tem como usar await que eu tô ligado
 	let bg: HTMLImageElement;
-	loadImage(background).then(image => bg = image);
+	loadImage(background).then((image) => (bg = image));
 
 	onMount(() => {
-		const unsubscribe = liturgia.subscribe(newValue => {
-			drawCanvas(canvas, {top: 'ih', main: newValue.nome, bottom: 'ala'}, { background: bg }, false);
-		})
+		const unsubscribe = liturgia.subscribe((newValue) => {
+			drawCanvas(
+				canvas,
+				{ top: 'ih', main: newValue.nome, bottom: 'ala' },
+				{ background: bg },
+				false
+			);
+		});
 		return unsubscribe;
 	});
 </script>
@@ -44,7 +49,7 @@
 <style>
 	canvas {
 		width: 960px;
-        border: 1px solid gray;
-        background-color: green;
+		border: 1px solid gray;
+		background-color: green;
 	}
 </style>
