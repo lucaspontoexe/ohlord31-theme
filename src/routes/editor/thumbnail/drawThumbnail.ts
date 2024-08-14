@@ -1,7 +1,7 @@
 type obj_title = {top: string, main: string, bottom: string}
 type img_object = {background: HTMLImageElement}
 
-export function drawCanvas(canvas: HTMLCanvasElement, title: obj_title, imageObject: img_object, drawDebugLines = false) {
+export function drawCanvas(canvas: HTMLCanvasElement, title: obj_title, images: img_object, drawDebugLines = false) {
     if (!canvas) return;
     const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -23,7 +23,7 @@ export function drawCanvas(canvas: HTMLCanvasElement, title: obj_title, imageObj
       m = v + w + z,
       u = m + titleHeight;
     ctx.save(),
-      imageObject.background && ctx.drawImage(imageObject.background, 0, 0),
+      images.background && ctx.drawImage(images.background, 0, 0),
       (ctx.font = "italic 96px Lora"),
       (ctx.textBaseline = "top"),
       (ctx.textAlign = "center"),
