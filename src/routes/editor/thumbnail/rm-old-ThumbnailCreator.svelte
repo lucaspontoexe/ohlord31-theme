@@ -1,5 +1,5 @@
 <script lang="ts">
-  //@ts-ignore
+  // @ts-nocheck
   import { onMount } from "svelte";
   import { drawCanvas } from './drawThumbnail';
 	import background from '$lib/canvas-background.webp';
