@@ -42,6 +42,9 @@
 				</label>
 				<div class="addremove">(adicionar item/remover acima)</div>
 			</div>
+			<div class="plsadd">
+				adicionar aqui no meio
+			</div>
 		{/each}
 	</div>
 
@@ -53,7 +56,7 @@
 		display: flex;
 		flex-direction: column;
 	}
-	.block {
+	.block, .plsadd {
 		margin-bottom: 1em;
 	}
 </style>
