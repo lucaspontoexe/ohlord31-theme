@@ -6,6 +6,8 @@
 	import background from '$lib/canvas-background.webp';
 	import FontLoader from '$lib/FontLoader.svelte';
 
+	const serverAddress = `http://${location.hostname}:3000/api/`;
+
 	const liturgia = websocketStore('liturgia', fallback['liturgia']);
 	// podia usar action? podia
 	let canvas: HTMLCanvasElement;
@@ -47,24 +49,36 @@
 	loadImage(background).then((image) => (bg = image));
 
 	onMount(() => {
+		init();
 		// todo: evitar o uso do websocket e trocar pelo HTTP mesmo
 		const unsubscribe = liturgia.subscribe((newValue) => {
-			drawCanvas(
-				canvas,
-				title,
-				{ background: bg },
-				false
-			);
+			drawCanvas(canvas, title, { background: bg }, false);
 		});
 		return unsubscribe;
 	});
 
+	async function init() {
+		const { nome }: (typeof fallback)['liturgia'] = await fetch(
+			serverAddress + 'state/liturgia'
+		).then((r) => r.json());
+		// regex: após "do", "da", "de" ou vírgula,
+		// seguidos de espaço, adiciona uma quebra de linha
+		title.main = nome.replace(/(\bd[oae]s?|,) /, (m) => m + '\n');
 
-	async function load2() {
-		await document.fonts.ready;
-		drawCanvas(canvas, title, {background: bg});
+		// set stream title
+		const date = new Intl.DateTimeFormat('pt-BR').format(new Date());
+		streamTitle = nome + ' | ' + date;
+
+		const poppins = new FontFace(
+			'PoppinsBold',
+			'local("Poppins"), url("/fonts/Poppins/Poppins-Bold.ttf")'
+		);
+		const loraItalic = new FontFace(
+			'Lora',
+			'local("Lora"), url("/fonts/Lora/Lora-Italic-VariableFont_wght.ttf")'
+		);
+		await Promise.all([poppins.load(), loraItalic.load()]);
 	}
-	load2();
 
 	async function saveCanvasAsImage() {
 		drawCanvas(canvas, title, { background: bg });
@@ -81,74 +95,73 @@
 </script>
 
 <main>
-	<FontLoader/>
+	<FontLoader />
 	<canvas width="1920" height="1080" bind:this={canvas} />
-  
-	<section class="config">
-	  <div class="block">
-		<h2>Parte de cima</h2>
-		<input bind:value={title.top} placeholder="parte de cima" type="text" name="top" />
-	  </div>
-	  <div class="block">
-		<h2>Título principal</h2>
-		<textarea
-		  bind:value={title.main}
-		  placeholder="título principal"
-		  name="main"
-		  cols="16"
-		  rows="3"
-		/>
-	  </div>
-	  <div class="block">
-		<h2>Parte de baixo</h2>
-		<input bind:value={title.bottom} placeholder="parte de baixo" type="text" name="bottom" />
-	  </div>
-  
-	  <div class="block">
-		<h2>Imagem</h2>
-		<button on:click={saveCanvasAsImage}>salvar imagem</button>
-	  </div>
-  
-	  <div class="block">
-		<h2>Título:</h2>
-		<span>{streamTitle}</span>
-		<br />
-		<button on:click={copyTitle}> copiar título </button>
-	  </div>
-	</section>
-  </main>
 
-  <style>
+	<section class="config">
+		<div class="block">
+			<h2>Parte de cima</h2>
+			<input bind:value={title.top} placeholder="parte de cima" type="text" name="top" />
+		</div>
+		<div class="block">
+			<h2>Título principal</h2>
+			<textarea
+				bind:value={title.main}
+				placeholder="título principal"
+				name="main"
+				cols="16"
+				rows="3"
+			/>
+		</div>
+		<div class="block">
+			<h2>Parte de baixo</h2>
+			<input bind:value={title.bottom} placeholder="parte de baixo" type="text" name="bottom" />
+		</div>
+
+		<div class="block">
+			<h2>Imagem</h2>
+			<button on:click={saveCanvasAsImage}>salvar imagem</button>
+		</div>
+
+		<div class="block">
+			<h2>Título:</h2>
+			<span>{streamTitle}</span>
+			<br />
+			<button on:click={copyTitle}> copiar título </button>
+		</div>
+	</section>
+</main>
+
+<style>
 	main {
-	  display: flex;
-	  font-family: sans-serif;
+		display: flex;
+		font-family: sans-serif;
 	}
-  
+
 	canvas {
-	  border: 1px solid gray;
-	  width: 960px;
-	  margin-right: 20px;
+		border: 1px solid gray;
+		width: 960px;
+		margin-right: 20px;
 	}
-  
+
 	section.config {
-	  display: flex;
-	  flex-direction: column;
+		display: flex;
+		flex-direction: column;
 	}
-  
+
 	input,
 	textarea {
-	  display: block;
-	  font-size: 1em;
-	  font-family: sans-serif;
+		display: block;
+		font-size: 1em;
+		font-family: sans-serif;
 	}
-  
+
 	.block {
-	  margin-bottom: 1em;
+		margin-bottom: 1em;
 	}
-  
+
 	h2 {
-	  margin: 0.1em 0em;
-	  font-size: 1.2em;
+		margin: 0.1em 0em;
+		font-size: 1.2em;
 	}
-  </style>
-  
+</style>

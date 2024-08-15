@@ -30,7 +30,7 @@ export function drawCanvas(canvas: HTMLCanvasElement, title: obj_title, images: 
       (ctx.fillStyle = "white"),
       ctx.fillText(title.top, 960, v),
       ctx.fillText(title.bottom, 960, u),
-      (ctx.font = "144px Poppins"),
+      (ctx.font = "144px PoppinsBold"),
       (ctx.fillStyle = "#F6D084"),
       (ctx.shadowBlur = 12),
       (ctx.shadowOffsetY = 12),
