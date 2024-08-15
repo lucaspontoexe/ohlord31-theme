@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { websocketStore } from '$lib/websocketStore2';
 	import { fallback } from '$lib/fallback';
 	import { onMount } from 'svelte';
 	import { drawCanvas } from './drawThumbnail';
@@ -8,10 +7,8 @@
 
 	const serverAddress = `http://${location.hostname}:3000/api/`;
 
-	const liturgia = websocketStore('liturgia', fallback['liturgia']);
 	// podia usar action? podia
 	let canvas: HTMLCanvasElement;
-	// TODO: copiar aquele código regex + salvar thumbnail + copiar pra clipboard
 
 	let streamTitle = 'Evento | DD/MM/AAAA';
 	let title = {
@@ -19,6 +16,7 @@
 		main: 'Título',
 		bottom: getDate()
 	};
+	let isLoaded = false;
 
 	function getDate() {
 		// conseguimos encontrar o código da versão antiva
@@ -49,13 +47,10 @@
 	loadImage(background).then((image) => (bg = image));
 
 	onMount(() => {
-		init();
-		// todo: evitar o uso do websocket e trocar pelo HTTP mesmo
-		const unsubscribe = liturgia.subscribe((newValue) => {
-			drawCanvas(canvas, title, { background: bg }, false);
-		});
-		return unsubscribe;
+		init().then(() => isLoaded = true);
 	});
+
+	$: isLoaded && drawCanvas(canvas, title, {background: bg});
 
 	async function init() {
 		const { nome }: (typeof fallback)['liturgia'] = await fetch(
@@ -154,6 +149,7 @@
 		display: block;
 		font-size: 1em;
 		font-family: sans-serif;
+		width: 100%;
 	}
 
 	.block {
