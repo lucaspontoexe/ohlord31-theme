@@ -12,6 +12,11 @@
 	</div>
 
 	<div class="block">
+		<input type="text" />
+		<textarea name="" id="" />
+	</div>
+
+	<div class="block">
 		<button>botão</button>
 	</div>
 
@@ -19,10 +24,7 @@
 		<button class="click-to-disable">botão</button>
 	</div>
 
-	<div class="block">
-		<input type="text" />
-		<textarea name="" id="" />
-	</div>
+
 </main>
 
 <style lang="scss">
