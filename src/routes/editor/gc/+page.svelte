@@ -19,9 +19,9 @@
 	<h1>editor gc</h1>
 	<p>copiar tema do OBS etc</p>
 
-	<section class="block">
+	<section class="all-blocks">
 		{#each $lower_thirds as lt}
-			<div class="thething">
+			<div class="block">
 				{#if lt.layout === 'default'}
 					<input type="text" bind:value={lt.props.top} />
 					<textarea bind:value={lt.props.bottom} />
@@ -32,21 +32,23 @@
 				{#if lt.id !== $display.id}
 					<button on:click={() => ($display = lt)}>Mostar na tela</button>
 				{:else}
-					<button on:click={() => ($display = no_display)}>ih, sumiu</button>
+					<button on:click={() => ($display = no_display)} class="click-to-disable">ih, sumiu</button>
 				{/if}
 			</div>
 		{/each}
 	</section>
 </main>
 
-<style>
+<style lang="scss">
+	@import "src/lib/yami.scss";
+	
 	main {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 	}
 
-	.block {
+	.all-blocks {
 		width: 100%;
 		max-width: 600px;
 		box-sizing: border-box;
@@ -60,7 +62,7 @@
 		max-height: 50vh;
 	}
 
-	.thething {
+	.block {
 		display: flex;
 		flex-direction: column;
 		margin-bottom: 1em;
