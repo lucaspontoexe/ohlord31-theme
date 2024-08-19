@@ -24,7 +24,7 @@
 	</header>
 
 	<h2>leituras</h2>
-	<div class="blocks">
+	<main class="blocks">
 		{#each $liturgia.leituras as leitura}
 			<div class="block">
 				<label>
@@ -37,26 +37,20 @@
 					<input type="text" bind:value={leitura.referencia} />
 				</label>
 				<label>
-					Descrição / Refrão Salmo
+					Descrição (Refrão Salmo)
 					<textarea bind:value={leitura.descricao} />
 				</label>
 				<div class="addremove">(adicionar item/remover acima)</div>
 			</div>
-			<div class="plsadd">
-				adicionar aqui no meio
-			</div>
+			<div class="plsadd">adicionar aqui no meio</div>
 		{/each}
-	</div>
 
-	<button>aplicar isso nos GCs</button>
+		<button>aplicar isso nos GCs</button>
+	</main>
+
+	<button hidden class="click-to-disable hide-css-warning">sai warning</button>
 </main>
 
-<style>
-	label {
-		display: flex;
-		flex-direction: column;
-	}
-	.block, .plsadd {
-		margin-bottom: 1em;
-	}
+<style lang="scss">
+	@import "./style.scss";
 </style>
