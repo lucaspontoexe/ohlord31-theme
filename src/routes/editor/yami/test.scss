@@ -1,0 +1,51 @@
+@use "src/variables.scss" as *;
+@use "sass:color";
+@import "src/lib/mixins.scss";
+
+main {
+    background-color: $obs-base;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+button {
+    @include reset-size;
+    
+    background-color: $obs-primary;
+    color: $obs-buttonText;
+    font-family: $obs-font;
+    // font-size: 14px;
+    font-weight: 200;
+    border: none;
+    
+    height: 36px;
+    width: 100%;
+    padding: 0.5em;
+    border-radius: 4px;
+    box-shadow: 0px 4px color.adjust($obs-primaryDark, $alpha: -0.6);
+
+    transition: box-shadow 100ms, background-color 100ms, transform 100ms;
+    &:hover {background-color: $obs-primaryLight}
+    &:active {box-shadow: 0px 0px $obs-primaryDark; transform: translateY(4px);}
+}
+
+button.click-to-disable {
+    background-color: crimson;
+    box-shadow: 0px 2px $obs-primaryDark;
+    transform: translateY(2px);
+    &:hover {background-color: color.scale($color: crimson, $lightness: 10%);}
+    &:active {box-shadow: 0px 0px $obs-primaryDark; transform: translateY(4px);}
+}
+
+input, textarea {
+    @include obs-inputs;
+}
+
+textarea {
+    line-height: 1.2em;
+    resize: vertical;
+    min-height: 3.2em;
+    max-height: 50vh;
+}

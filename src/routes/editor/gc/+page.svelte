@@ -19,7 +19,7 @@
 	<h1>editor gc</h1>
 	<p>copiar tema do OBS etc</p>
 
-	<div class="block">
+	<section class="block">
 		{#each $lower_thirds as lt}
 			<div class="thething">
 				{#if lt.layout === 'default'}
@@ -36,7 +36,7 @@
 				{/if}
 			</div>
 		{/each}
-	</div>
+	</section>
 </main>
 
 <style>
