@@ -1,0 +1,62 @@
+@mixin reset-size {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+@mixin reset-input {
+    @include reset-size();
+    display: inline-block;
+    vertical-align: middle;
+    white-space: normal;
+    background: none;
+    line-height: 1;
+}
+
+@mixin reset-link {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+@mixin fixed-full {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+@mixin absolute-square($size) {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    height: $size;
+    width: $size;
+}
+
+@mixin text-backdrop-shadow($size, $alpha) {
+    text-shadow: 0px 0px $size rgba(0, 0, 0, $alpha);
+}
+
+@mixin obs-inputs() {
+        @include reset-input;
+        width: 100%;
+        font-family: $obs-font;
+        font-size: 14px;
+        padding: 4px 6px;
+        margin-bottom: 6px;
+        border-radius: 4px;
+        border: 2px solid $obs-button;
+        
+        color: white;
+        background-color: $obs-button;
+        
+        &:hover {
+            border: 2px solid $obs-light;
+        }
+        &:focus {
+            background-color: $obs-window;
+            border-color: $obs-primary;
+            outline: none;
+        }
+}
