@@ -8,8 +8,6 @@
         <a href="{base}/editor/gc">gc |</a>
         <a href="{base}/editor/thumbnail">thumbnail</a>
     </nav>
-
-    <pre>tem que copiar o tema do OBS aqui</pre>
 </header>
 
 <slot></slot>

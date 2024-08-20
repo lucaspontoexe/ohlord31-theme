@@ -53,18 +53,19 @@
 		max-width: 600px;
 		box-sizing: border-box;
 		margin-bottom: 1em;
+		padding: 1em 2em;
 	}
 
 	textarea {
 		line-height: 1.2em;
 		resize: vertical;
-		min-height: 3.2em;
+		min-height: 4em;
 		max-height: 50vh;
 	}
 
 	.block {
 		display: flex;
 		flex-direction: column;
-		margin-bottom: 1em;
+		margin-bottom: 2em;
 	}
 </style>

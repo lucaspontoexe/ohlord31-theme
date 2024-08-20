@@ -131,12 +131,15 @@
 	main {
 		display: flex;
 		font-family: sans-serif;
+		flex-wrap: wrap;
+		margin: 20px;
+		gap: 20px;
 	}
 
 	canvas {
 		border: 1px solid gray;
-		width: 960px;
-		margin-right: 20px;
+		width: min(960px, 100%);
+		align-self: center;
 	}
 
 	section.config {
