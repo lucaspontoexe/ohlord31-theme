@@ -23,6 +23,9 @@ Um componente feito só pra carregar as fontes pro editor de thumbnail
 
     .font_loader {
         visibility: hidden;
+        position: fixed;
+        top: 0px;
+        left: 0px;
     }
 
     .poppins {
