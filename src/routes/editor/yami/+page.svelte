@@ -1,4 +1,6 @@
 <script lang="ts">
+	import ColorEditor from "./ColorEditor.svelte";
+
 </script>
 
 <main>
@@ -24,9 +26,12 @@
 		<button class="click-to-disable">botão</button>
 	</div>
 
+	<div class="block">
+		<ColorEditor></ColorEditor>
+	</div>
 
 </main>
 
 <style lang="scss">
-	@import './test.scss';
+	@import '$lib/yami.scss';
 </style>
