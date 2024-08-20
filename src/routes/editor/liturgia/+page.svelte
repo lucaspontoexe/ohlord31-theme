@@ -7,8 +7,6 @@
 
 <main>
 	<h1>liturgia</h1>
-	<p>edições salvas automaticamente</p>
-
 
 	<h2>alterar data</h2>
 	<section class="blocks">
@@ -50,6 +48,8 @@
 			</div>
 			<div class="plsadd" hidden>adicionar aqui no meio</div>
 		{/each}
+
+		<p>edições salvas automaticamente</p>
 
 		<button>aplicar isso nos GCs [noop]</button>
 	</section>
