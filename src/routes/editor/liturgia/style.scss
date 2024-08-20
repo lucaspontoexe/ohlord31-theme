@@ -5,6 +5,7 @@ main {
     font-family: $obs-font;
     height: 100%;
     width: 100%;
+    padding-bottom: 2em;
 }
 
 .blocks, header {
@@ -13,7 +14,7 @@ main {
 }
 
 .blocks {
-    padding-bottom: 4em;
+    padding-bottom: 2em;
     padding-left: 2em;
     padding-right: 2em;
     box-sizing: border-box;

@@ -9,6 +9,13 @@
 	<h1>liturgia</h1>
 	<p>edições salvas automaticamente</p>
 
+
+	<h2>alterar data</h2>
+	<section class="blocks">
+		<input type="date" name="data" id="data">
+		<button>aaaa</button>
+	</section>
+
 	<h2>título / cor</h2>
 	<header class="blocks">
 		<label>
