@@ -7,11 +7,10 @@
 
 <main>
 	<h1>liturgia</h1>
-	<p>amém</p>
-	<p>tem que decidir essa UX da edição</p>
+	<p>edições salvas automaticamente</p>
 
 	<h2>título / cor</h2>
-	<header>
+	<header class="blocks">
 		<label>
 			Nome
 			<input type="text" bind:value={$liturgia.nome} />
@@ -24,7 +23,7 @@
 	</header>
 
 	<h2>leituras</h2>
-	<main class="blocks">
+	<section class="blocks">
 		{#each $liturgia.leituras as leitura}
 			<div class="block">
 				<label>
@@ -42,15 +41,19 @@
 				</label>
 				<div class="addremove">(adicionar item/remover acima)</div>
 			</div>
-			<div class="plsadd">adicionar aqui no meio</div>
+			<div class="plsadd" hidden>adicionar aqui no meio</div>
 		{/each}
 
-		<button>aplicar isso nos GCs</button>
-	</main>
+		<button>aplicar isso nos GCs [noop]</button>
+	</section>
 
 	<button hidden class="click-to-disable hide-css-warning">sai warning</button>
 </main>
 
 <style lang="scss">
 	@import "./style.scss";
+	.addremove {
+		font-style: italic;
+		color: gray;
+	}
 </style>

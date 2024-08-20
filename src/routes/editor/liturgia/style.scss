@@ -3,7 +3,6 @@
 main {
     @include reset-size();
     font-family: $obs-font;
-    margin: 2em auto;
     height: 100%;
     width: 100%;
 }
@@ -11,6 +10,13 @@ main {
 .blocks, header {
     width: 100%;
     max-width: 600px;
+}
+
+.blocks {
+    padding-bottom: 4em;
+    padding-left: 2em;
+    padding-right: 2em;
+    box-sizing: border-box;
 }
 
 label {
