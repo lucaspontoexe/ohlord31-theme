@@ -11,3 +11,11 @@
 </header>
 
 <slot></slot>
+
+<style lang="scss">
+    @import "src/lib/mixins.scss";
+
+    :global(body) {
+        @include reset-size();
+    }
+</style>
