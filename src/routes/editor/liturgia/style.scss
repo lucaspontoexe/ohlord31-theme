@@ -25,12 +25,15 @@ label {
     flex-direction: column;
 }
 
-.block,
-.plsadd {
+.block {
     width: 100%;
     margin-bottom: 1em;
     padding: 1em;
     background-color: $obs-primaryDark;
     border-radius: 0.5em;
     box-sizing: border-box;
+}
+
+button.plsadd {
+    margin-bottom: 1em;
 }

@@ -3,6 +3,15 @@
 	import type { PageData } from './$types';
 	export let data: PageData;
 	const liturgia = websocketStore('liturgia', data.initialState);
+	const leitura = { nome: '', referencia: '', descricao: '' };
+
+	function adcLeitura(index: number) {
+		$liturgia.leituras = [
+			...$liturgia.leituras.slice(0, index),
+			leitura,
+			...$liturgia.leituras.slice(index)
+		];
+	}
 </script>
 
 <main>
@@ -29,7 +38,7 @@
 
 	<h2>leituras</h2>
 	<section class="blocks">
-		{#each $liturgia.leituras as leitura}
+		{#each $liturgia.leituras as leitura, index}
 			<div class="block">
 				<label>
 					Nome
@@ -46,7 +55,7 @@
 				</label>
 				<div class="addremove">(adicionar item/remover acima)</div>
 			</div>
-			<div class="plsadd" hidden>adicionar aqui no meio</div>
+			<button class="plsadd" on:click={() => adcLeitura(index +1)}>adicionar aqui no meio</button>
 		{/each}
 
 		<p>edições salvas automaticamente</p>
@@ -58,7 +67,7 @@
 </main>
 
 <style lang="scss">
-	@import "./style.scss";
+	@import './style.scss';
 	.addremove {
 		font-style: italic;
 		color: gray;
