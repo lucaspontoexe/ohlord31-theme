@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { websocketStore } from '$lib/websocketStore2';
+	import { onMount } from 'svelte';
 	import type { PageData } from './$types';
 	export let data: PageData;
 	const liturgia = websocketStore('liturgia', data.initialState);
@@ -12,6 +13,22 @@
 			...$liturgia.leituras.slice(index)
 		];
 	}
+
+	function handleFormPost(event:SubmitEvent) {
+		const fd = new FormData(event.target as HTMLFormElement);
+		const date = (fd.get("date")?.toString());
+		console.log(date);
+		fetch(`http://${location.hostname}:3000/api/reset_state?date=${date}&keepLowerThirds=false`, {method: "POST"})
+	}
+
+	onMount(() => {
+		// workaround 
+		// não tem um campo indicando qual é o dia da liturgia,
+		// então a gente deixa a data do formulário como a de hoje
+		// na maioria das vezes é isso mesmo
+		const inputDate = document.querySelector("input#date") as HTMLInputElement;
+		inputDate.value = new Date().toISOString().split("T")[0];
+	})
 </script>
 
 <main>
@@ -19,8 +36,10 @@
 
 	<h2>alterar data</h2>
 	<section class="blocks">
-		<input type="date" name="data" id="data">
-		<button>aaaa</button>
+		<form action="javascript:" on:submit={handleFormPost}>
+			<input type="date" name="date" id="date" />
+			<button type="submit">bora</button>
+		</form>
 	</section>
 
 	<h2>título / cor</h2>
