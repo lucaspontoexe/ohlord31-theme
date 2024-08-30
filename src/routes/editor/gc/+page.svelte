@@ -16,9 +16,6 @@
 </script>
 
 <main>
-	<h1>editor gc</h1>
-	<p>copiar tema do OBS etc</p>
-
 	<section class="all-blocks">
 		{#each $lower_thirds as lt}
 			<div class="block">
@@ -26,13 +23,15 @@
 					<input type="text" bind:value={lt.props.top} />
 					<textarea bind:value={lt.props.bottom} />
 				{:else}
-					<p>{lt.layout}</p>
+					<div class="layout-only">{lt.layout}</div>
 				{/if}
 
 				{#if lt.id !== $display.id}
 					<button on:click={() => ($display = lt)}>Mostar na tela</button>
 				{:else}
-					<button on:click={() => ($display = no_display)} class="click-to-disable">ih, sumiu</button>
+					<button on:click={() => ($display = no_display)} class="click-to-disable">
+						Remover da tela
+					</button>
 				{/if}
 			</div>
 		{/each}
@@ -40,8 +39,8 @@
 </main>
 
 <style lang="scss">
-	@import "src/lib/yami.scss";
-	
+	@import 'src/lib/yami.scss';
+
 	main {
 		display: flex;
 		flex-direction: column;
@@ -67,5 +66,15 @@
 		display: flex;
 		flex-direction: column;
 		margin-bottom: 2em;
+	}
+
+	.layout-only {
+		font-family: $obs-font;
+		text-align: center;
+		margin: 0.4em 0em;
+		padding: 0.4em 1.2em;
+		border-radius: 4px;
+		background-color: $obs-button;
+		color: $obs-brightText;
 	}
 </style>
