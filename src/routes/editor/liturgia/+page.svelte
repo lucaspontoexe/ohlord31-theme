@@ -72,9 +72,9 @@
 					Descrição (Refrão Salmo)
 					<textarea bind:value={leitura.descricao} />
 				</label>
-				<div class="addremove">(adicionar item/remover acima)</div>
+				<div class="addremove">(adicionar item/remover acima) (noop)</div>
 			</div>
-			<button class="plsadd" on:click={() => adcLeitura(index +1)}>adicionar aqui no meio</button>
+			<button hidden class="plsadd" on:click={() => adcLeitura(index +1)}>adicionar aqui no meio</button>
 		{/each}
 
 		<p>edições salvas automaticamente</p>
