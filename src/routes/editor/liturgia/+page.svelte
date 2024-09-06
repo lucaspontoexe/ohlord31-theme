@@ -38,7 +38,7 @@
 	<section class="blocks">
 		<form action="javascript:" on:submit={handleFormPost}>
 			<input type="date" name="date" id="date" />
-			<button type="submit">bora</button>
+			<button type="submit">Alterar</button>
 		</form>
 	</section>
 
