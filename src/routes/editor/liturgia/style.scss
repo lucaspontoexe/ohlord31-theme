@@ -8,7 +8,16 @@ main {
     padding-bottom: 2em;
 }
 
-.blocks, header {
+h1 {
+    font-size: 1.5em;
+}
+
+h2 {
+    font-size: 1em;
+}
+
+.blocks,
+header {
     width: 100%;
     max-width: 600px;
 }
@@ -25,12 +34,15 @@ label {
     flex-direction: column;
 }
 
-.block,
-.plsadd {
+.block {
     width: 100%;
     margin-bottom: 1em;
     padding: 1em;
     background-color: $obs-primaryDark;
     border-radius: 0.5em;
     box-sizing: border-box;
+}
+
+button.plsadd {
+    margin-bottom: 1em;
 }
